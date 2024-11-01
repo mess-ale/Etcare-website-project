@@ -3,79 +3,43 @@
         <header :style="{ backgroundColor: headerBackgroundColor }" class="fixed top-0 left-0 right-0 z-10 w-full flex items-center justify-between text-primary
             xs:h-12 sm:h-16 md:h-20 xl:h-24 xs:pl-8 sm:pl-10 md:pl-12 xl:pl-16 xs:pr-8 sm:pr-10 md:pr-12 xl:pr-14">
             <div>
-                <img class="w-full h-auto max-w-[65%] md:max-w-full" src="../assets/Etcare_logo1-removebg.png"
-                    alt="etcare logo" />
+                <nuxt-link to="/"><img class="w-full h-auto max-w-[65%] md:max-w-full"
+                        src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" /></nuxt-link>
+
             </div>
 
-            <div class=" hidden md:inline xs:text-xs md:text-base">
+            <div class="hidden md:inline xs:text-xs md:text-base">
                 <div class="space-x-7 flex item-center">
-                    <div class="relative">                    <nuxt-link to="/" class="links ba">HOME</nuxt-link>
-</div>
-                    <div class="flex items-center" @mouseenter="showDropdown = true" @mouseleave="showDropdown = false">
+                    <div class="relative"> <nuxt-link to="/" class="links">HOME</nuxt-link>
+                    </div>
+                    <div class="flex items-center dropdown-link">
                         <nuxt-link to="/service" class="links">SERVICE</nuxt-link>
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
                             class="ml-1">
                             <path fill="currentColor" d="m5 8l7 8l7-8z"></path>
                         </svg>
-                        <div v-if="showDropdown" class="dropdown">
-                            <nuxt-link to="/service/saving" class="dropdown-item">
-                                <div class="flex items-center space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M5.925 21q-.575 0-1.112-.4t-.713-.975q-.625-2.1-1.025-3.637t-.638-2.7t-.337-2.063T2 9.5q0-2.3 1.6-3.9T7.5 4h5q.675-.9 1.713-1.45T16.5 2q.625 0 1.063.438T18 3.5q0 .15-.038.3t-.087.275q-.1.275-.187.55t-.138.6L19.825 7.5H21q.425 0 .713.288T22 8.5v5.25q0 .325-.187.575t-.513.375l-2.125.7l-1.25 4.175q-.2.65-.725 1.038T16 21h-2q-.825 0-1.412-.587T12 19h-2q0 .825-.587 1.413T8 21zM16 11q.425 0 .713-.288T17 10t-.288-.712T16 9t-.712.288T15 10t.288.713T16 11m-4-2q.425 0 .713-.288T13 8t-.288-.712T12 7H9q-.425 0-.712.288T8 8t.288.713T9 9z">
-                                        </path>
-                                    </svg>
-                                    <h1>Saving</h1>
-                                </div>
+                        <ul class="dropdown font-bold font-Roboto">
+                            <nuxt-link to="/service/saving">
+                                <li>
+                                    Saving
+                                </li>
                             </nuxt-link>
-                            <nuxt-link to="/service/training" class="dropdown-item">
-                                <div class=" flex items-center  space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M5.189 18.1q-.814-1.085-1.251-2.37Q3.5 14.444 3.5 13q0-3.558 2.471-6.029T12 4.5h1.412l-2.12-2.12l.689-.688L15.288 5l-3.307 3.308l-.714-.714L13.362 5.5H12q-3.111 0-5.306 2.194T4.5 13q0 1.237.374 2.352t1.047 2.035zm6.08.092q-.096-.748-.455-1.32q-.358-.572-.756-1.107q-.399-.536-.709-1.103t-.31-1.278q0-1.219.87-2.09q.872-.871 2.091-.871t2.09.871t.872 2.09q0 .712-.311 1.269q-.31.556-.709 1.102q-.398.545-.756 1.117q-.359.572-.455 1.32zm.039 2.5v-1.115h1.384v1.115zm7.504-2.592l-.733-.713q.673-.92 1.047-2.035T19.5 13q0-1.611-.62-3.014t-1.724-2.43l.713-.714q1.239 1.174 1.935 2.744T20.5 13q0 1.444-.437 2.73q-.438 1.285-1.251 2.37">
-                                        </path>
-                                    </svg><h1>training</h1>
-                                </div>
+                            <nuxt-link to="/service/equb">
+                                <li>
+                                    equb
+                                </li>
                             </nuxt-link>
-                            <nuxt-link to="/service/equb"class="dropdown-item">
-                                <div class="flex items-center space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        viewBox="0 0 48 48">
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M18.595 41.825H5.5V35.23l8.285-3.352c-1.472 4.825 3.464 7.685 6.315 6.051z">
-                                        </path>
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M20.1 37.93c0-.374 1.239-2.087 1.698-2.087c.565 0 2.202-.884 2.202-1.978V7.35c-.367-1.502-2.602-1.695-2.956.196l-1.483 10.065c-.26 1.634-.99 1.634-1.272 3.267c-.389 3.18-.76 8.729-4.504 11.001m15.62 9.946H42.5V35.23l-8.285-3.352c1.472 4.825-3.464 7.685-6.315 6.051z">
-                                        </path>
-                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M27.9 37.93c0-.374-1.239-2.087-1.698-2.087c-.565 0-2.202-.884-2.202-1.978V7.35c.367-1.502 2.602-1.695 2.956.196l1.484 10.065c.259 1.634.989 1.634 1.271 3.267c.389 3.18.76 8.729 4.504 11.001M12.498 14.475l-3.631.148m6.285-2.523l.547-3.593m-2.019 4.64l-1.886-2.105m22.884 3.433l3.63.148M32.024 12.1l-.547-3.593m2.019 4.64l1.885-2.105">
-                                        </path>
-                                    </svg><h1>equb</h1>
-                                </div>
+                            <nuxt-link to="/service/loan">
+                                <li>
+                                    Loan
+                                </li>
                             </nuxt-link>
-                            <nuxt-link to="/service/loan"class='dropdown-item'>
-                                <div class=" flex itmes-center space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
-                                        viewBox="0 0 32 32">
-                                        <path fill="currentColor"
-                                            d="m15 22l-1.41 1.41L16.17 26H4V8H2v18c0 1.103.897 2 2 2h12.17l-2.58 2.59L15 32l5-5z">
-                                        </path>
-                                        <circle cx="11" cy="16" r="1" fill="currentColor"></circle>
-                                        <path fill="currentColor"
-                                            d="M24 20H8c-1.103 0-2-.897-2-2v-4c0-1.103.897-2 2-2h16c1.103 0 2 .897 2 2v4c0 1.103-.897 2-2 2M8 14v4h16v-4z">
-                                        </path>
-                                        <path fill="currentColor"
-                                            d="M28 4H15.83l2.58-2.59L17 0l-5 5l5 5l1.41-1.41L15.83 6H28v18h2V6c0-1.102-.897-2-2-2">
-                                        </path>
-                                    </svg><h1>loan</h1>
-                                </div>
+                            <nuxt-link to="/service/training">
+                                <li>
+                                    training
+                                </li>
                             </nuxt-link>
-                        </div>
+                        </ul>
                     </div>
                     <nuxt-link to="/about" class="links">ABOUT</nuxt-link>
                     <nuxt-link to="/blog" class="links">BLOG</nuxt-link>
@@ -119,7 +83,10 @@
                                     d="M12 20.556q-.235 0-.47-.077t-.432-.25q-1.067-.981-2.164-2.185q-1.096-1.203-1.99-2.493t-1.468-2.633t-.572-2.622q0-3.173 2.066-5.234Q9.037 3 12 3t5.03 2.062q2.066 2.061 2.066 5.234q0 1.279-.572 2.613q-.572 1.333-1.458 2.632q-.885 1.3-1.981 2.494T12.92 20.21q-.191.173-.434.26q-.244.086-.487.086m.004-8.825q.667 0 1.14-.476q.472-.475.472-1.143t-.476-1.14t-1.143-.472t-1.14.476t-.472 1.143t.475 1.14t1.144.472">
                                 </path>
                             </svg>
-                            <h4>Addis Ababa, Ethiopia</h4>
+                            <a href="https://www.google.com/maps/place/@/data=!4m2!3m1!1s0x164b85d2859f108f:0x68ca412e1ca4808"
+                                class="links" target="_blank">
+                                <h4>Addis Ababa, Ethiopia</h4>
+                            </a>
                         </div>
 
                         <div class="items-center flex space-x-5">
@@ -137,8 +104,9 @@
                                     </path>
                                 </g>
                             </svg>
-
-                            <h4>Etcare@gmail.com</h4>
+                            <a href="mailto:Etcare@gmail.com" class="links">
+                                <h4>Etcare@gmail.com</h4>
+                            </a>
                         </div>
 
                         <div class="items-center flex space-x-5">
@@ -148,7 +116,9 @@
                                 </path>
                             </svg>
 
-                            <h4>+251-91-755-0560</h4>
+                            <a href="tel:+251917550560" class="links">
+                                <h4>+251-91-755-0560</h4>
+                            </a>
                         </div>
 
                     </div>
@@ -181,39 +151,12 @@
 
                     <div class="space-y-3">
                         <h4 class="mb-4 font-bold">LATEST NEWS</h4>
-                        <div>
-                            <div class="flex space-x-3">
-                                <img src="../assets/dall1.png" />
-                                <div>
-                                    <h6 class="font-light text-sm">Empowering Members Through Financial Education
-                                    </h6>
-                                    <h4 class="font-bold">21th Joly 2017</h4>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex space-x-3">
-                                <img src="../assets/dall2.png" />
-                                <div>
-                                    <h6 class="font-light text-sm">Empowering Members Through Financial Education
-                                    </h6>
-                                    <h4 class="font-bold">21th Joly 2017</h4>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex space-x-3">
-                                <img src="../assets/dall3.png" />
-                                <div>
-                                    <h6 class="font-light text-sm">Empowering Members Through Financial Education
-                                    </h6>
-                                    <h4 class="font-bold">21th Joly 2017</h4>
-                                </div>
-
-                            </div>
-                        </div>
+                        <footerblogco imageSrc="../_nuxt/assets/dall1.png"
+                            description="Empowering Members Through Financial Education" date="21th Joly 2017" />
+                        <footerblogco imageSrc="../_nuxt/assets/dall2.png"
+                            description="Empowering Members Through Financial Education" date="21th Joly 2017" />
+                        <footerblogco imageSrc="../_nuxt/assets/dall3.png"
+                            description="Empowering Members Through Financial Education" date="21th Joly 2017" />
                     </div>
 
                     <div>
@@ -241,13 +184,13 @@
                                             d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95">
                                         </path>
                                     </svg></nuxt-link>
-
-                                <svg class="socialM" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"
-                                    viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M12.244 4c.534.003 1.87.016 3.29.073l.504.022c1.429.067 2.857.183 3.566.38c.945.266 1.687 1.04 1.938 2.022c.4 1.56.45 4.602.456 5.339l.001.152v.174c-.007.737-.057 3.78-.457 5.339c-.254.985-.997 1.76-1.938 2.022c-.709.197-2.137.313-3.566.38l-.504.023c-1.42.056-2.756.07-3.29.072l-.235.001h-.255c-1.13-.007-5.856-.058-7.36-.476c-.944-.266-1.687-1.04-1.938-2.022c-.4-1.56-.45-4.602-.456-5.339v-.326c.006-.737.056-3.78.456-5.339c.254-.985.997-1.76 1.939-2.021c1.503-.419 6.23-.47 7.36-.476zM9.999 8.5v7l6-3.5z">
-                                    </path>
-                                </svg>
+                                <nuxt-link to="https://www.youtube.com/@etcarebeautyandcosmeticssales" target="_blank">
+                                    <svg class="socialM" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"
+                                        viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M12.244 4c.534.003 1.87.016 3.29.073l.504.022c1.429.067 2.857.183 3.566.38c.945.266 1.687 1.04 1.938 2.022c.4 1.56.45 4.602.456 5.339l.001.152v.174c-.007.737-.057 3.78-.457 5.339c-.254.985-.997 1.76-1.938 2.022c-.709.197-2.137.313-3.566.38l-.504.023c-1.42.056-2.756.07-3.29.072l-.235.001h-.255c-1.13-.007-5.856-.058-7.36-.476c-.944-.266-1.687-1.04-1.938-2.022c-.4-1.56-.45-4.602-.456-5.339v-.326c.006-.737.056-3.78.456-5.339c.254-.985.997-1.76 1.939-2.021c1.503-.419 6.23-.47 7.36-.476zM9.999 8.5v7l6-3.5z">
+                                        </path>
+                                    </svg></nuxt-link>
                                 <nuxt-link to="https://vm.tiktok.com/ZMhQxWYC7/" target="_blank"> <svg class="socialM"
                                         xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
                                         <path
@@ -261,7 +204,6 @@
                                             d="M9.78 18.65l.28-4.23l7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3L3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"
                                             fill="currentColor"></path>
                                     </svg></nuxt-link>
-
                             </div>
                         </div>
                     </div>
@@ -270,7 +212,8 @@
 
             <div class="textcopy w-full flex items-center justify-between text-primary">
                 <div>
-                    <img src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" />
+                    <nuxt-link to="/"> <img src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" />
+                    </nuxt-link>
                 </div>
                 <div>
                     <nuxt-link to="/Privacy" class="links">Privacy Policy</nuxt-link>
@@ -354,10 +297,6 @@ export default {
     color: theme('colors.secondary');
 }
 
-.socialM::after {
-    transition: transform .3s ease-in-out;
-}
-
 
 .bg-background {
     height: 70rem;
@@ -369,18 +308,25 @@ export default {
     width: 25%;
     border-top: solid 1px theme('colors.secondary');
     top: 60%;
+    display: none;
 }
 
+.dropdown-link:hover .dropdown {
+    display: block;
+}
 
-.dropdown-item {
+.dropdown li:hover {
+    color: theme('colors.secondary');
+}
+
+.dropdown li {
     padding: 0.5rem 1rem;
     position: relative;
     border-bottom: solid 1px theme('colors.secondary');
-    display: block;
-    overflow: hidden; /* Ensure the overflow is hidden to hide the overflow of the pseudo-element */
+    overflow: hidden;
 }
 
-.dropdown-item::before {
+.dropdown li::before {
     content: '';
     background-image: linear-gradient(to right, transparent, theme('colors.primary'));
     width: 0;
@@ -388,10 +334,11 @@ export default {
     bottom: 0;
     height: 100%;
     left: 0;
-    transition: width 0.65s ease; /* Apply the transition property here */
+    transition: width 0.65s ease;
+    /* Apply the transition property here */
 }
 
-.dropdown-item:hover::before {
+.dropdown li:hover::before {
     width: 100%;
 }
 </style>
