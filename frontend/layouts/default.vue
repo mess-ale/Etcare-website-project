@@ -3,13 +3,14 @@
         <header :style="{ backgroundColor: headerBackgroundColor }" class="fixed top-0 left-0 right-0 z-10 w-full flex items-center justify-between text-primary
             xs:h-12 sm:h-16 md:h-20 xl:h-24 xs:pl-8 sm:pl-10 md:pl-12 xl:pl-16 xs:pr-8 sm:pr-10 md:pr-12 xl:pr-14">
             <div>
-                <img class="xs:h-[65%] xs:w-[65%] md:h-[100%] md:w-[100%]" src="../assets/Etcare_logo1-removebg.png"
+                <img class="w-full h-auto max-w-[65%] md:max-w-full" src="../assets/Etcare_logo1-removebg.png"
                     alt="etcare logo" />
             </div>
 
-            <div class="hidden md:inline xs:text-xs md:text-base">
+            <div class=" hidden md:inline xs:text-xs md:text-base">
                 <div class="space-x-7 flex item-center">
-                    <nuxt-link to="/" class="links">HOME</nuxt-link>
+                    <div class="relative">                    <nuxt-link to="/" class="links ba">HOME</nuxt-link>
+</div>
                     <div class="flex items-center" @mouseenter="showDropdown = true" @mouseleave="showDropdown = false">
                         <nuxt-link to="/service" class="links">SERVICE</nuxt-link>
                         <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
@@ -17,51 +18,63 @@
                             <path fill="currentColor" d="m5 8l7 8l7-8z"></path>
                         </svg>
                         <div v-if="showDropdown" class="dropdown">
-                            <div class="dropdown-item space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M5.925 21q-.575 0-1.112-.4t-.713-.975q-.625-2.1-1.025-3.637t-.638-2.7t-.337-2.063T2 9.5q0-2.3 1.6-3.9T7.5 4h5q.675-.9 1.713-1.45T16.5 2q.625 0 1.063.438T18 3.5q0 .15-.038.3t-.087.275q-.1.275-.187.55t-.138.6L19.825 7.5H21q.425 0 .713.288T22 8.5v5.25q0 .325-.187.575t-.513.375l-2.125.7l-1.25 4.175q-.2.65-.725 1.038T16 21h-2q-.825 0-1.412-.587T12 19h-2q0 .825-.587 1.413T8 21zM16 11q.425 0 .713-.288T17 10t-.288-.712T16 9t-.712.288T15 10t.288.713T16 11m-4-2q.425 0 .713-.288T13 8t-.288-.712T12 7H9q-.425 0-.712.288T8 8t.288.713T9 9z">
-                                    </path>
-                                </svg>
-                                <nuxt-link to="/service/saving">Saving</nuxt-link>
-                            </div>
-                            <div class="dropdown-item  space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                                    <path fill="currentColor"
-                                        d="M5.189 18.1q-.814-1.085-1.251-2.37Q3.5 14.444 3.5 13q0-3.558 2.471-6.029T12 4.5h1.412l-2.12-2.12l.689-.688L15.288 5l-3.307 3.308l-.714-.714L13.362 5.5H12q-3.111 0-5.306 2.194T4.5 13q0 1.237.374 2.352t1.047 2.035zm6.08.092q-.096-.748-.455-1.32q-.358-.572-.756-1.107q-.399-.536-.709-1.103t-.31-1.278q0-1.219.87-2.09q.872-.871 2.091-.871t2.09.871t.872 2.09q0 .712-.311 1.269q-.31.556-.709 1.102q-.398.545-.756 1.117q-.359.572-.455 1.32zm.039 2.5v-1.115h1.384v1.115zm7.504-2.592l-.733-.713q.673-.92 1.047-2.035T19.5 13q0-1.611-.62-3.014t-1.724-2.43l.713-.714q1.239 1.174 1.935 2.744T20.5 13q0 1.444-.437 2.73q-.438 1.285-1.251 2.37">
-                                    </path>
-                                </svg><nuxt-link to="/service/training">training</nuxt-link>
-                            </div>
-                            <div class="dropdown-item  space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48">
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M18.595 41.825H5.5V35.23l8.285-3.352c-1.472 4.825 3.464 7.685 6.315 6.051z">
-                                    </path>
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M20.1 37.93c0-.374 1.239-2.087 1.698-2.087c.565 0 2.202-.884 2.202-1.978V7.35c-.367-1.502-2.602-1.695-2.956.196l-1.483 10.065c-.26 1.634-.99 1.634-1.272 3.267c-.389 3.18-.76 8.729-4.504 11.001m15.62 9.946H42.5V35.23l-8.285-3.352c1.472 4.825-3.464 7.685-6.315 6.051z">
-                                    </path>
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M27.9 37.93c0-.374-1.239-2.087-1.698-2.087c-.565 0-2.202-.884-2.202-1.978V7.35c.367-1.502 2.602-1.695 2.956.196l1.484 10.065c.259 1.634.989 1.634 1.271 3.267c.389 3.18.76 8.729 4.504 11.001M12.498 14.475l-3.631.148m6.285-2.523l.547-3.593m-2.019 4.64l-1.886-2.105m22.884 3.433l3.63.148M32.024 12.1l-.547-3.593m2.019 4.64l1.885-2.105">
-                                    </path>
-                                </svg><nuxt-link to="/service/equb">equb</nuxt-link>
-                            </div>
-                            <div class="dropdown-item  space-x-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32">
-                                    <path fill="currentColor"
-                                        d="m15 22l-1.41 1.41L16.17 26H4V8H2v18c0 1.103.897 2 2 2h12.17l-2.58 2.59L15 32l5-5z">
-                                    </path>
-                                    <circle cx="11" cy="16" r="1" fill="currentColor"></circle>
-                                    <path fill="currentColor"
-                                        d="M24 20H8c-1.103 0-2-.897-2-2v-4c0-1.103.897-2 2-2h16c1.103 0 2 .897 2 2v4c0 1.103-.897 2-2 2M8 14v4h16v-4z">
-                                    </path>
-                                    <path fill="currentColor"
-                                        d="M28 4H15.83l2.58-2.59L17 0l-5 5l5 5l1.41-1.41L15.83 6H28v18h2V6c0-1.102-.897-2-2-2">
-                                    </path>
-                                </svg><nuxt-link to="/service/loan">loan</nuxt-link>
-                            </div>
+                            <nuxt-link to="/service/saving" class="dropdown-item">
+                                <div class="flex items-center space-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M5.925 21q-.575 0-1.112-.4t-.713-.975q-.625-2.1-1.025-3.637t-.638-2.7t-.337-2.063T2 9.5q0-2.3 1.6-3.9T7.5 4h5q.675-.9 1.713-1.45T16.5 2q.625 0 1.063.438T18 3.5q0 .15-.038.3t-.087.275q-.1.275-.187.55t-.138.6L19.825 7.5H21q.425 0 .713.288T22 8.5v5.25q0 .325-.187.575t-.513.375l-2.125.7l-1.25 4.175q-.2.65-.725 1.038T16 21h-2q-.825 0-1.412-.587T12 19h-2q0 .825-.587 1.413T8 21zM16 11q.425 0 .713-.288T17 10t-.288-.712T16 9t-.712.288T15 10t.288.713T16 11m-4-2q.425 0 .713-.288T13 8t-.288-.712T12 7H9q-.425 0-.712.288T8 8t.288.713T9 9z">
+                                        </path>
+                                    </svg>
+                                    <h1>Saving</h1>
+                                </div>
+                            </nuxt-link>
+                            <nuxt-link to="/service/training" class="dropdown-item">
+                                <div class=" flex items-center  space-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 24 24">
+                                        <path fill="currentColor"
+                                            d="M5.189 18.1q-.814-1.085-1.251-2.37Q3.5 14.444 3.5 13q0-3.558 2.471-6.029T12 4.5h1.412l-2.12-2.12l.689-.688L15.288 5l-3.307 3.308l-.714-.714L13.362 5.5H12q-3.111 0-5.306 2.194T4.5 13q0 1.237.374 2.352t1.047 2.035zm6.08.092q-.096-.748-.455-1.32q-.358-.572-.756-1.107q-.399-.536-.709-1.103t-.31-1.278q0-1.219.87-2.09q.872-.871 2.091-.871t2.09.871t.872 2.09q0 .712-.311 1.269q-.31.556-.709 1.102q-.398.545-.756 1.117q-.359.572-.455 1.32zm.039 2.5v-1.115h1.384v1.115zm7.504-2.592l-.733-.713q.673-.92 1.047-2.035T19.5 13q0-1.611-.62-3.014t-1.724-2.43l.713-.714q1.239 1.174 1.935 2.744T20.5 13q0 1.444-.437 2.73q-.438 1.285-1.251 2.37">
+                                        </path>
+                                    </svg><h1>training</h1>
+                                </div>
+                            </nuxt-link>
+                            <nuxt-link to="/service/equb"class="dropdown-item">
+                                <div class="flex items-center space-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 48 48">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M18.595 41.825H5.5V35.23l8.285-3.352c-1.472 4.825 3.464 7.685 6.315 6.051z">
+                                        </path>
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M20.1 37.93c0-.374 1.239-2.087 1.698-2.087c.565 0 2.202-.884 2.202-1.978V7.35c-.367-1.502-2.602-1.695-2.956.196l-1.483 10.065c-.26 1.634-.99 1.634-1.272 3.267c-.389 3.18-.76 8.729-4.504 11.001m15.62 9.946H42.5V35.23l-8.285-3.352c1.472 4.825-3.464 7.685-6.315 6.051z">
+                                        </path>
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M27.9 37.93c0-.374-1.239-2.087-1.698-2.087c-.565 0-2.202-.884-2.202-1.978V7.35c.367-1.502 2.602-1.695 2.956.196l1.484 10.065c.259 1.634.989 1.634 1.271 3.267c.389 3.18.76 8.729 4.504 11.001M12.498 14.475l-3.631.148m6.285-2.523l.547-3.593m-2.019 4.64l-1.886-2.105m22.884 3.433l3.63.148M32.024 12.1l-.547-3.593m2.019 4.64l1.885-2.105">
+                                        </path>
+                                    </svg><h1>equb</h1>
+                                </div>
+                            </nuxt-link>
+                            <nuxt-link to="/service/loan"class='dropdown-item'>
+                                <div class=" flex itmes-center space-x-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                        viewBox="0 0 32 32">
+                                        <path fill="currentColor"
+                                            d="m15 22l-1.41 1.41L16.17 26H4V8H2v18c0 1.103.897 2 2 2h12.17l-2.58 2.59L15 32l5-5z">
+                                        </path>
+                                        <circle cx="11" cy="16" r="1" fill="currentColor"></circle>
+                                        <path fill="currentColor"
+                                            d="M24 20H8c-1.103 0-2-.897-2-2v-4c0-1.103.897-2 2-2h16c1.103 0 2 .897 2 2v4c0 1.103-.897 2-2 2M8 14v4h16v-4z">
+                                        </path>
+                                        <path fill="currentColor"
+                                            d="M28 4H15.83l2.58-2.59L17 0l-5 5l5 5l1.41-1.41L15.83 6H28v18h2V6c0-1.102-.897-2-2-2">
+                                        </path>
+                                    </svg><h1>loan</h1>
+                                </div>
+                            </nuxt-link>
                         </div>
                     </div>
                     <nuxt-link to="/about" class="links">ABOUT</nuxt-link>
@@ -76,8 +89,8 @@
                         d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z">
                     </path>
                 </svg>
-
             </div>
+
             <div>
                 <nuxt-link to="/login"
                     class="xs:text-xs md:text-base flex items-center etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
@@ -299,16 +312,6 @@ export default {
     color: theme('colors.secondary');
 }
 
-.button {
-    cursor: pointer;
-}
-
-.search {
-    cursor: pointer;
-}
-
-
-
 .etcare-button {
     background-color: theme('colors.primary');
     color: theme('colors.white');
@@ -331,38 +334,15 @@ export default {
 
 }
 
-.inputclass {
-    border-width: 2px;
-    width: 25rem;
-    border: none;
-    padding: 0.5rem 1rem;
-    outline: none;
-    background-color: transparent;
-}
-
-.searchbox {
-    border: 2px solid theme('colors.primary');
-}
-
-.searchbox:focus-within {
-    background-color: theme('colors.secondary');
-}
-
 .textcopy {
     background-color: theme('colors.background');
-    height: 90px;
+    height: 100px;
     padding: 0 4rem;
-}
-
-.footerlink {
-    justify-content: space-between;
-    padding: 1.75rem 0;
-    border-bottom: 2px solid #181818;
 }
 
 .footerpadding {
     padding: 0 4rem;
-    height: 400px;
+    height: 440px;
 }
 
 .socialM {
@@ -383,26 +363,35 @@ export default {
     height: 70rem;
 }
 
-
-
 .dropdown {
     position: absolute;
     background-color: theme('colors.white');
-    top: 65%;
-    z-index: 10;
     width: 25%;
+    border-top: solid 1px theme('colors.secondary');
+    top: 60%;
 }
+
 
 .dropdown-item {
-    display: flex;
-    padding: 10px;
-    align-items: center;
+    padding: 0.5rem 1rem;
+    position: relative;
     border-bottom: solid 1px theme('colors.secondary');
-    text-decoration: none;
-    color: theme('colors.primary');
+    display: block;
+    overflow: hidden; /* Ensure the overflow is hidden to hide the overflow of the pseudo-element */
 }
 
-.dropdown-item:hover {
-    color: theme('colors.secondary');
+.dropdown-item::before {
+    content: '';
+    background-image: linear-gradient(to right, transparent, theme('colors.primary'));
+    width: 0;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    transition: width 0.65s ease; /* Apply the transition property here */
+}
+
+.dropdown-item:hover::before {
+    width: 100%;
 }
 </style>
