@@ -5,7 +5,6 @@
             <div>
                 <nuxt-link to="/"><img class="w-full h-auto max-w-[65%] md:max-w-full"
                         src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" /></nuxt-link>
-
             </div>
 
             <div class="hidden md:inline xs:text-xs md:text-base">
@@ -308,11 +307,14 @@ export default {
     width: 25%;
     border-top: solid 1px theme('colors.secondary');
     top: 60%;
-    display: none;
+    visibility: hidden; 
+    opacity: 0;
+    transition: opacity 1s, visibility 1s;
 }
 
 .dropdown-link:hover .dropdown {
-    display: block;
+    visibility: visible; /* Make it visible */
+    opacity: 1;
 }
 
 .dropdown li:hover {

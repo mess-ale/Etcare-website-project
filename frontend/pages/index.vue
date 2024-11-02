@@ -1,5 +1,8 @@
 <template>
     <div>
-        <h1>hello world!!</h1>
+        <SwitchingStacks />
     </div>
 </template>
+
+<script>
+</script>
