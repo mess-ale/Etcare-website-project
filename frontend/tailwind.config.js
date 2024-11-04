@@ -18,8 +18,8 @@ export default {
           black: '#000',
         },
         fontFamily: {
-          Oswald: ['Oswald', 'sans-serif'],
-          Roboto: ['Roboto', 'sans-serif'],
+          oswald: ['Oswald', 'sans-serif'],
+          roboto: ['Roboto', 'sans-serif'],
         },
         fontSize: {
           'xs': '0.75rem',

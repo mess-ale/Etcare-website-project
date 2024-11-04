@@ -1,14 +1,14 @@
 <template>
-    <div>
+    <div class="web-body">
         <header :style="{ backgroundColor: headerBackgroundColor }" class="fixed top-0 left-0 right-0 z-10 w-full flex items-center justify-between text-primary
-            xs:h-12 sm:h-16 md:h-20 xl:h-24 xs:pl-8 sm:pl-10 md:pl-12 xl:pl-16 xs:pr-8 sm:pr-10 md:pr-12 xl:pr-14">
+            xs:h-12 sm:h-16 md:h-20 xl:h-24 xs:pl-8 sm:pl-10 md:pl-12 xl:pl-16 xs:pr-8 sm:pr-10 md:pr-12 xl:pr-14 header1">
             <div>
                 <nuxt-link to="/"><img class="w-full h-auto max-w-[65%] md:max-w-full"
                         src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" /></nuxt-link>
             </div>
 
             <div class="hidden md:inline xs:text-xs md:text-base">
-                <div class="space-x-7 flex item-center">
+                <div class="space-x-7 flex item-center font-bold">
                     <div class="relative"> <nuxt-link to="/" class="links">HOME</nuxt-link>
                     </div>
                     <div class="flex items-center dropdown-link">
@@ -227,7 +227,7 @@
 export default {
     data() {
         return {
-            headerBackgroundColor: 'transparent',
+            headerBackgroundColor: 'rgba(255, 255, 255, 0.55)',
             showDropdown: false
         };
     },
@@ -250,6 +250,12 @@ export default {
 </script>
 
 <style>
+.web-body {
+    padding: 0;
+    margin: 0;
+    background-color: theme('colors.background');
+}
+
 .links:hover {
     color: theme('colors.secondary');
 }
@@ -296,11 +302,6 @@ export default {
     color: theme('colors.secondary');
 }
 
-
-.bg-background {
-    height: 70rem;
-}
-
 .dropdown {
     position: absolute;
     background-color: theme('colors.white');
@@ -343,4 +344,5 @@ export default {
 .dropdown li:hover::before {
     width: 100%;
 }
+
 </style>

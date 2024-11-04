@@ -29,6 +29,5 @@
   </script>
   
   <style scoped>
-  /* No additional styling is needed */
   </style>
   
