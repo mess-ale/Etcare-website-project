@@ -31,9 +31,9 @@ export default {
     return {
       images: [
         '../_nuxt/assets/homepage1.png',
-        '../_nuxt/assets/homepage6.png',
         '../_nuxt/assets/homepage3.png',
-        '../_nuxt/assets/homepage4.png',
+        '../_nuxt/assets/homepage1.png',
+        '../_nuxt/assets/homepage3.png',
       ],
       title: [
         "Secure Your Financial Future with Our Trustworthy Saving Solutions – Building Wealth with Confidence.",
@@ -115,6 +115,8 @@ export default {
     'colors.secondary'
   );
   font-weight: bolder;
+}.link-home {
+  transition: border-top 0.2s ease-in-out;
 }
 .link-home:hover {
   border-top: solid 4px theme('colors.primary');

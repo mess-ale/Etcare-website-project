@@ -82,7 +82,7 @@
                                     d="M12 20.556q-.235 0-.47-.077t-.432-.25q-1.067-.981-2.164-2.185q-1.096-1.203-1.99-2.493t-1.468-2.633t-.572-2.622q0-3.173 2.066-5.234Q9.037 3 12 3t5.03 2.062q2.066 2.061 2.066 5.234q0 1.279-.572 2.613q-.572 1.333-1.458 2.632q-.885 1.3-1.981 2.494T12.92 20.21q-.191.173-.434.26q-.244.086-.487.086m.004-8.825q.667 0 1.14-.476q.472-.475.472-1.143t-.476-1.14t-1.143-.472t-1.14.476t-.472 1.143t.475 1.14t1.144.472">
                                 </path>
                             </svg>
-                            <a href="https://www.google.com/maps/place/@/data=!4m2!3m1!1s0x164b85d2859f108f:0x68ca412e1ca4808"
+                            <a href="https://maps.app.goo.gl/Bim8BvzZjeQAjKTU8"
                                 class="links" target="_blank">
                                 <h4>Addis Ababa, Ethiopia</h4>
                             </a>
@@ -267,6 +267,7 @@ export default {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s;
+    transition: background-color 0.5s ease, color 0.5s ease
 }
 
 .etcare-button:hover {

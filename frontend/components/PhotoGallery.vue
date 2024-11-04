@@ -14,11 +14,11 @@ export default {
     data() {
         return {
             photos: [
-                { url: '../_nuxt/assets/gallary1.png' },
-                { url: '../_nuxt/assets/gallary2.png' },
-                { url: '../_nuxt/assets/gallary3.png' },
-                { url: '../_nuxt/assets/gallary4.png' },
-                { url: '../_nuxt/assets/gallary5.png' },
+                { url: '../_nuxt/assets/01.png' },
+                { url: '../_nuxt/assets/03.png' },
+                { url: '../_nuxt/assets/06.png' },
+                { url: '../_nuxt/assets/07.png' },
+                { url: '../_nuxt/assets/08.png' },
             ],
             selectedPhoto: null
         };
@@ -40,6 +40,8 @@ export default {
 }
 .hover-photo {
     cursor: pointer;
+    height: 290px;
+    width: 260px;
     transition: transform 0.3s ease-in-out;
 }
  .hover-photo:hover {
@@ -57,5 +59,8 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 11;
+}.modal-img {
+    width: 60%;
+    height: 80%;
 }
 </style>

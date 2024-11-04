@@ -1,22 +1,22 @@
 <template>
-  <div class="bg-white shadow-md rounded-lg overflow-hidden">
+  <div class="blog-card bg-white shadow-md rounded-lg overflow-hidden">
     <div class="bg-gray-100 p-6">
-      <h2 class="text-xl font-bold mb-2">{{ title }}</h2>
-      <p class="text-gray-700 text-sm">{{ summary }}</p>
+      <h2 class="text-xl font-bold mb-2 text-secondary">{{ title }}</h2>
+      <p class="text-primary text-sm">{{ summary }}</p>
     </div>
     <div class="bg-gray-200 p-6">
       <img :src="image" alt="Blog Image" class="w-full h-auto mb-4">
-      <p class="text-gray-700">{{ content }}</p>
+      <p class="text-primary">{{ content }}</p>
     </div>
     <div class="bg-gray-100 p-6 flex justify-between items-center">
       <div>
-        <p class="text-gray-700 text-sm">By {{ author }}</p>
-        <p class="text-gray-700 text-sm">{{ publishedAt }}</p>
+        <p class="text-primary text-sm">By {{ author }}</p>
+        <p class="text-primary text-sm">{{ publishedAt }}</p>
       </div>
       <div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <nuxt-link class="etcare-button px-4 py-2" to="/readMore" >
           Read More
-        </button>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -34,3 +34,8 @@ export default {
   },
 };
 </script>
+
+<style>
+.blog-card {
+}
+</style>

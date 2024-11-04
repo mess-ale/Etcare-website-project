@@ -66,11 +66,15 @@
 
         <PhotoGallery />
 
-        <div class="blog-letest">
-            <img src="../assets/logo1-removebg.png" alt="logo" />
-            <h1>Directly Blog Posts</h1>
-            <p>Latest News & Articles from the Posts</p>
-            <div>
+        <div class="blog-letest space-y-6">
+            <div class="flex justify-center">
+                <img src="../assets/logo1-removebg.png" alt="logo" />
+            </div>
+            <h1 class="text-center text-primary font-oswald text-xl">Directly Blog Posts</h1>
+            <div class="flex justify-center">
+                <p class="p-blog text-primary text-center font-oswald text-6xl font-bold">Latest News & Articles from the Posts</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <blog-component title="My First Blog Post"
                     summary="This is a blog post about my first experience with Nuxt.js."
                     image="../_nuxt/assets/dall1.png" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
@@ -89,13 +93,22 @@
 </template>
 
 <script>
-import BlogCard from '~/components/blog-component.vue';
 
 </script>
 
 <style>
 .who-we-are {
     padding: 2rem 7rem;
+}
+
+.blog-letest {
+    background-image: url('../assets/services-bg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 4rem
+}
+.p-blog {
+    width: 60%;
 }
 
 .value-boje-section {
