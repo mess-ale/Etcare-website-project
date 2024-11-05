@@ -1,10 +1,10 @@
 <template>
     <div>
-        <ImageCard text="Contact" />
+        <serviceCard text="Contact Us" imgservice="../_nuxt/assets/2.jpg"/>
 
         <div class="contact-page grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="space-y-4">
-                <h1 class="font-robot text-4xl font-bold text-secondary">Address</h1>
+                <h1 class="font-oswald text-4xl font-bold text-secondary">Address</h1>
                 <div class="flex items-center space-x-4 text-secondary font-robot">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -13,7 +13,7 @@
                     </svg>
                     <p class="text-primary">Gollagul Tower, Addis ababa</p>
                 </div>
-                <div class="flex items-center space-x-4 text-secondary font-robot">
+                <div class="flex items-center space-x-4 text-secondary font-oswald">
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -31,7 +31,7 @@
                     <p class="text-primary">Etcare@gmail.com</p>
                 </div>
 
-                <h1 class="font-robot text-4xl font-bold text-secondary">WORKING HOURS</h1>
+                <h1 class="font-oswald text-4xl font-bold text-secondary">WORKING HOURS</h1>
                 <div class="flex items-center space-x-4 text-secondary font-robot">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -40,7 +40,7 @@
                     </svg>
                     <p class="text-primary">2:00 am to 12:00pm on Weekdays</p>
                 </div>
-                <h1 class="font-robot text-4xl font-bold text-secondary">FOLLOW US</h1>
+                <h1 class="font-oswald text-4xl font-bold text-secondary">FOLLOW US</h1>
                 <div class="flex space-x-3">
                     <nuxt-link to="https://web.facebook.com/etcaresacco" target="_blank"><svg
                             class="socialM text-primary" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"

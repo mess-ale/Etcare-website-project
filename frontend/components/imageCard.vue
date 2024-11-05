@@ -1,10 +1,10 @@
 <template>
-    <div class="cover">
+    <div class="cover cover-service-img">
         <div class="text">
             <h1 class="text-secondary font-oswald font-bold text-5xl">{{ text }}</h1>
         </div>
     </div>
-    <img src="../assets/Group 40.png" class="pt-4 pb-12" alt="line header" />
+    <img src="../assets/Group 40.png" class="pt-4 pb-12 image-class" alt="line header" />
 </template>
 
 <script>
@@ -33,5 +33,9 @@ export default {
     display: flex;
     text-align: center;
     justify-content: center;
+}
+
+.image-class {
+    width: 100%;
 }
 </style>
