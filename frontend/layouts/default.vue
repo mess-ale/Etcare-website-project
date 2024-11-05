@@ -345,5 +345,7 @@ export default {
 .dropdown li:hover::before {
     width: 100%;
 }
-
+.bg-background {
+    overflow: hidden;
+}
 </style>

@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .cover {
-    height: 33rem;
+    height: 90vh;
     display: flex;
     align-items: center;
     background-size: cover;
