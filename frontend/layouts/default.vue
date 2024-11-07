@@ -228,7 +228,6 @@ export default {
     data() {
         return {
             headerBackgroundColor: 'rgba(255, 255, 255, 0.55)',
-            showDropdown: false
         };
     },
     mounted() {
@@ -266,8 +265,6 @@ export default {
     border-radius: 10px 10px 10px 0;
     border: none;
     cursor: pointer;
-    transition: background-color 0.3s;
-    transition: background-color 0.5s ease, color 0.5s ease
 }
 
 .etcare-button:hover {
@@ -304,19 +301,19 @@ export default {
 }
 
 .dropdown {
-    position: absolute;
-    background-color: theme('colors.white');
-    width: 25%;
-    border-top: solid 1px theme('colors.secondary');
-    top: 60%;
-    visibility: hidden; 
-    opacity: 0;
-    transition: opacity 1s, visibility 1s;
+  position: absolute;
+  background-color: white; /* Replace with theme('colors.white') */
+  width: 25%;
+  border-top: solid 1px #ccc; /* Replace with theme('colors.secondary') */
+  top: 60%;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s, visibility 1s;
 }
 
 .dropdown-link:hover .dropdown {
-    visibility: visible; /* Make it visible */
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 .dropdown li:hover {
@@ -339,13 +336,9 @@ export default {
     height: 100%;
     left: 0;
     transition: width 0.65s ease;
-    /* Apply the transition property here */
 }
 
 .dropdown li:hover::before {
     width: 100%;
-}
-.bg-background {
-    overflow: hidden;
 }
 </style>

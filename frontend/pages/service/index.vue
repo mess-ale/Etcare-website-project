@@ -213,6 +213,7 @@ export default {
 
 .service-body {
     padding: 4rem;
+    overflow: hidden;
 }
 
 .service-body img {
