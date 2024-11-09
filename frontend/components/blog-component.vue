@@ -14,7 +14,7 @@
         <p class="text-primary text-sm">{{ publishedAt }}</p>
       </div>
       <div>
-        <nuxt-link class="etcare-button px-4 py-2" to="/readMore" >
+        <nuxt-link class="etcare-button px-4 py-2" to="/blog/readMore" >
           Read More
         </nuxt-link>
       </div>
