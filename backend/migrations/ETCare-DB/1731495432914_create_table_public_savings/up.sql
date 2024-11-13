@@ -1,0 +1,1 @@
+CREATE TABLE "public"."savings" ("savings_id" serial NOT NULL, "user_id" integer NOT NULL, "account_balance" integer NOT NULL, "account_type" text NOT NULL, "created_at" date NOT NULL, PRIMARY KEY ("savings_id") , FOREIGN KEY ("user_id") REFERENCES "public"."users"("user_id") ON UPDATE cascade ON DELETE cascade, UNIQUE ("savings_id"), UNIQUE ("user_id"));

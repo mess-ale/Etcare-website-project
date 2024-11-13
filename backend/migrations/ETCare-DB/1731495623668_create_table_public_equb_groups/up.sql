@@ -1,0 +1,1 @@
+CREATE TABLE "public"."equb_groups" ("equb_id" serial NOT NULL, "name" text NOT NULL, "group_size" integer NOT NULL, "cycle_period" integer NOT NULL, "amount_per_cycle" integer NOT NULL, "start_date" date NOT NULL, PRIMARY KEY ("equb_id") , UNIQUE ("equb_id"));
