@@ -2,27 +2,33 @@
     <div>
         <ServiceCard text="About" imgservice="../_nuxt/assets/service/about.png" />
         <div class="about-mar_pad">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 about-border">
-                <img src="../assets/service/building.png" alt="building" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 about-border">
+                <div >
+                    <img src="../assets/service/building.png" class="about-image" alt="building" />
+                </div>
                 <div class="space-y-8">
-                    <h1 class="text-primary font-bold text-justify">Etcare SACCOs Ltd is a leading financial cooperative
+                    <h1 class="text-primary font-bold text-justify text-xl">Etcare SACCOs Ltd is a leading financial cooperative
                         dedicated to empowering individuals and
                         communities through innovative financial solutions.</h1>
-                    <p class="text-primary text-justify">We are driven by the mission of financial literacy and
+                    <p class="text-primary text-justify text-lg">We are driven by the mission of financial literacy and
                         inclusion, ensuring that every member has
                         access to the knowledge and resources needed to make sound financial decisions. Through
                         education
+                        and transparent practices, we strive to uplift our members and foster long-term financial
+                        stability.
+                        and transparent practices, we strive to uplift our members and foster long-term financial
+                        stability.
                         and transparent practices, we strive to uplift our members and foster long-term financial
                         stability.
                     </p>
                 </div>
             </div>
 
-            <div class="pt-4 pb-4 space-y-8">
-                <h1 class="text-secondary text-oswald font-bold text-4xl text-center">About us</h1>
+            <div class="pt-8 pb-8 space-y-8">
+                <h1 class="text-secondary text-oswald font-bold text-5xl text-center">About us</h1>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                        <p class="text-primary font-robot text-justify text-lg">At Etcare SACCOs Ltd, we're known for
+                    <div class="flex items-center">
+                        <p class="text-primary font-robot text-justify text-xl">At Etcare SACCOs Ltd, we're known for
                             our professionalism and dedication in finance. Our main
                             goal is to become the best savings and credit cooperative society by 2020, helping our
                             members
@@ -38,18 +44,18 @@
                             our members and our community.</p>
                     </div>
                     <div>
-                        <img src="../assets/service/ETCA1490.png" class="image-service" alt="etc" />
+                        <img src="../assets/service/ETCA1490.png" class="about-image" alt="etc" />
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="Our-Best-Quality">
-            <div class="about-mar_pad pt-4 pb-4 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-                    <div class="space-y-2">
-                        <h1 class="text-secondary font-oswald font-bold text-3xl">Our Best Quality</h1>
-                        <p class="text-primary font-robot text-justify">At Etcare SACCOs Ltd, we pride ourselves on
+            <div class="about-mar_pad pt-12 pb-14 space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 ">
+                    <div class="space-y-4">
+                        <h1 class="text-secondary font-oswald font-bold text-4xl">Our Best Quality</h1>
+                        <p class="text-primary font-robot text-justify text-lg">At Etcare SACCOs Ltd, we pride ourselves on
                             delivering exceptional quality in every aspect of
                             our
                             services. Our commitment to excellence is driven by a deep understanding of our members'
@@ -57,7 +63,7 @@
                             and a desire to exceed their expectations.</p>
                     </div>
                     <div class="flex items-center justify-center">
-                        <img src="../assets/logo1-removebg.png" class="w-24 h-24" alt="logo" />
+                        <img src="../assets/logo1-removebg.png" class="w-32 h-32" alt="logo" />
 
                     </div>
                 </div>
@@ -74,8 +80,8 @@
                 </div>
             </div>
         </div>
-        <div class="about-mar_pad space-y-2 pt-16 pb-16">
-            <h1 class="text-primary text-3xl font-bold font-oswald text-center">OUR TEAM</h1>
+        <div class="about-mar_pad space-y-2 pt-16 pb-32">
+            <h1 class="text-primary font-bold font-oswald text-center text-4xl">OUR TEAM</h1>
             <p class="text-primary text-lg font-robot text-center">The Hardworking Team behind Etcare SACCO</p>
 
             <div class="flex justify-between items-center gap-4 team-staff">
@@ -160,11 +166,6 @@ function prevTeam() {
     background-color: #FFDFDF;
 }
 
-.image-service {
-    width: 100%;
-    height: 100%;
-}
-
 .about-button {
     background-color: theme('colors.secondary');
     border-radius: 8px 8px 8px 0;
@@ -182,5 +183,10 @@ function prevTeam() {
     border: 2px solid theme('colors.secondary');
     border-radius: 20px;
     padding: 2rem;
+}
+
+.about-image {
+    width: 100%;
+    height: 100%;
 }
 </style>

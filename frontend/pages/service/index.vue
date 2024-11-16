@@ -1,18 +1,18 @@
 <template>
     <div>
         <ServiceCard text="service" imgservice="../_nuxt/assets/service/service.png" />
-        <div class="space-y-4">
-            <h1 class="text-center text-primary font-oswald text-4xl font-bold ">Etcare SACCO Services</h1>
-            <p class="text-center text-primary font-light font-oswald">Our services include Savings, Loans, Micro Insurance, and the digital Equb system, all designed to meet your specific needs and help you achieve your financial goals.
+        <div class="space-y-4 pb-6">
+            <h1 class="text-center text-primary font-oswald text-5xl font-bold ">Etcare SACCO Services</h1>
+            <p class="text-center text-primary font-light font-oswald text-xl">Our services include Savings, Loans, Micro Insurance, and the digital Equb system, all designed to meet your specific needs and help you achieve your financial goals.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-0 service-body">
-            <div :class="{ 'onscreenleft': isVisibleleft1 }" class="offscreenleft" ref="myElementleft1">
-                <img src="../../assets/service/saving.png" alt="Description" class="transform-image" />
+            <div :class="{ 'onscreenleft': isVisibleleft1 }" class=" offscreenleft" ref="myElementleft1">
+                <img src="../../assets/service/saving.png" alt="Description" class="service-image" />
             </div>
             <div :class="{ 'onscreenright': isVisibleright1 }" class="offscreenright" ref="myElementright1">
-                <div class="space-y-8 p-8">
+                <div class="space-y-4 p-4">
                     <h1 class="text-secondary font-oswald text-5xl font-bold">Saving</h1>
                     <p class="text-primary font-robot text-xl text-justify">We understand the importance of saving for
                         the future, which is why we offer convenient and flexible savings options to help our members
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div :class="{ 'onscreenleft': isVisibleleft2 }" class="offscreenleft" ref="myElementleft2">
-                <div class="space-y-8 p-8">
+                <div class="space-y-4 p-4">
                     <h1 class="text-secondary font-oswald text-5xl font-bold">Training</h1>
                     <p class="text-primary font-robot text-xl text-justify">We understand the importance of saving for
                         the future, which is why we offer convenient and flexible savings options to help our members
@@ -51,14 +51,14 @@
                     </div>
                 </div>
             </div>
-            <div :class="{ 'onscreenright': isVisibleright2 }" class="offscreenright" ref="myElementright2">
-                <img src="../../assets/service/training.png" alt="saving" />
+            <div :class="{ 'onscreenright': isVisibleright2 }" class=" offscreenright" ref="myElementright2">
+                <img src="../../assets/service/training.png"   class="service-image"  alt="saving" />
             </div>
-            <div :class="{ 'onscreenleft': isVisibleleft3 }" class="offscreenleft" ref="myElementleft3">
-                <img src="../../assets/service/equb.png" alt="saving" />
+            <div :class="{ 'onscreenleft': isVisibleleft3 }" class=" offscreenleft" ref="myElementleft3">
+                <img src="../../assets/service/equb.png" alt="saving" class="service-image" />
             </div>
             <div :class="{ 'onscreenright': isVisibleright3 }" class="offscreenright" ref="myElementright3">
-                <div class="space-y-8 p-8">
+                <div class="space-y-4 p-4">
                     <h1 class="text-secondary font-oswald text-5xl font-bold">Equb</h1>
                     <p class="text-primary font-robot text-xl text-justify">We understand the importance of saving for
                         the future, which is why we offer convenient and flexible savings options to help our members
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div :class="{ 'onscreenleft': isVisibleleft4 }" class="offscreenleft" ref="myElementleft4">
-                <div class="space-y-8 p-8">
+                <div class="space-y-4 p-4">
                     <h1 class="text-secondary font-oswald text-5xl font-bold">loan</h1>
                     <p class="text-primary font-robot text-xl text-justify">We understand the importance of saving for
                         the future, which is why we offer convenient and flexible savings options to help our members
@@ -97,8 +97,8 @@
                     </div>
                 </div>
             </div>
-            <div :class="{ 'onscreenright': isVisibleright4 }" class="offscreenright" ref="myElementright4">
-                <img src="../../assets/service/loan.png" alt="saving" />
+            <div :class="{ 'onscreenright': isVisibleright4 }" class=" offscreenright" ref="myElementright4">
+                <img src="../../assets/service/loan.png"  alt="saving" class="service-image" />
             </div>
         </div>
     </div>
@@ -212,13 +212,8 @@ export default {
 }
 
 .service-body {
-    padding: 4rem;
+    padding: 4rem 4rem 10rem 4rem;
     overflow: hidden;
-}
-
-.service-body img {
-    width: 100%;
-    height: 100%;
 }
 
 .service-button {
@@ -233,4 +228,5 @@ export default {
     background-color: theme('colors.white');
     border: solid 1px theme('colors.secondary');
 }
+.service-image{width: 100%;height: 100%;}
 </style>
