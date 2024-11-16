@@ -74,7 +74,7 @@
             <div>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d250.58637222636318!2d38.788502794348865!3d9.017772981720599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8536dfa41f0d%3A0x82c1ac4735b86c63!2sEtcare%20Beauty%20Products%20Sales%20P.l.c!5e0!3m2!1sen!2set!4v1730728562675!5m2!1sen!2set"
-                    width="100%" height="100%" style="border:0;" loading="lazy"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>

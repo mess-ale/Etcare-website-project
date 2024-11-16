@@ -52,8 +52,7 @@
 
         <div v-else>
             <div class="items-cener flex justify-center space-x-16">
-                <div class="mt-8"> <img src="../../assets/justforshow.png" />
-                </div>
+                <img src="../../assets/justforshow.png" />
                 <div class="justify-center flex items-center">
                     <button
                         class="bg-white w-34 h-12 text-secondary font-oswald text-xl rounded-sm font-bold hover:bg-primary hover:text-white">
@@ -68,8 +67,7 @@
                         <h1 class="font-oswald text-2xl font-bold text-center">Remaining list</h1>
                     </div>
 
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
+                    <div class="flex py-2 space-x-8 items-cener justify-center shadow-md">
                             <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
                             <div class="">
                                 <h1 class="font-bold font-oswald">Ekram Ekram</h1>
@@ -78,141 +76,12 @@
                             <div>
                                 <h1 class="font-bold font-oswald">Amount</h1>
                                 <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
                         </div>
                     </div>
                 </div>
                 <div>
                     <div class="bg-background py-2 rounded-sm">
                         <h1 class="font-oswald text-2xl font-bold text-center">History of winners</h1>
-                    </div>
-
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="flex py-2items-cener justify-center">
-                        <div class="shadow-md p-3 m-2 flex space-x-16 rounded-xl">
-                            <img src="../../assets/team/PicEkram.jpg" class="w-12 h-12 equb-img" />
-                            <div class="">
-                                <h1 class="font-bold font-oswald">Ekram Ekram</h1>
-                                <p>type: milliners</p>
-                            </div>
-                            <div>
-                                <h1 class="font-bold font-oswald">Amount</h1>
-                                <p>1,000,000 birr</p>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
             </div>
