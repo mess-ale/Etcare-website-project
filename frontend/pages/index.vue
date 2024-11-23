@@ -93,6 +93,16 @@
 </template>
 
 <script>
+const refreshAccessToken = async () => {
+    try {
+        const response = await axios.post('http://127.0.0.1:8000/api/token/refresh/');
+        return response.data.access_token;
+    } catch (error) {
+        console.error('Failed to refresh access token:', error);
+        // Handle token renewal failure (e.g., log out the user)
+    }
+};
+
 
 </script>
 

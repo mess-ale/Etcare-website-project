@@ -70,7 +70,7 @@
             </div>
 
             <div v-else>
-                <div class="items-center flex space-x-2 user-profile" @click="toggleUserProfile">
+                <div class="items-center flex space-x-2 user-profile hover:text-secondary" @click="toggleUserProfile">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
                         <path fill="currentColor"
                             d="M12 11q.825 0 1.413-.588Q14 9.825 14 9t-.587-1.413Q12.825 7 12 7q-.825 0-1.412.587Q10 8.175 10 9q0 .825.588 1.412Q11.175 11 12 11Zm0 2q-1.65 0-2.825-1.175Q8 10.65 8 9q0-1.65 1.175-2.825Q10.35 5 12 5q1.65 0 2.825 1.175Q16 7.35 16 9q0 1.65-1.175 2.825Q13.65 13 12 13Zm0 11q-2.475 0-4.662-.938q-2.188-.937-3.825-2.574Q1.875 18.85.938 16.663Q0 14.475 0 12t.938-4.663q.937-2.187 2.575-3.825Q5.15 1.875 7.338.938Q9.525 0 12 0t4.663.938q2.187.937 3.825 2.574q1.637 1.638 2.574 3.825Q24 9.525 24 12t-.938 4.663q-.937 2.187-2.574 3.825q-1.638 1.637-3.825 2.574Q14.475 24 12 24Zm0-2q1.8 0 3.375-.575T18.25 19.8q-.825-.925-2.425-1.612q-1.6-.688-3.825-.688t-3.825.688q-1.6.687-2.425 1.612q1.3 1.05 2.875 1.625T12 22Zm-7.7-3.6q1.2-1.3 3.225-2.1q2.025-.8 4.475-.8q2.45 0 4.463.8q2.012.8 3.212 2.1q1.1-1.325 1.713-2.95Q22 13.825 22 12q0-2.075-.788-3.887q-.787-1.813-2.15-3.175q-1.362-1.363-3.175-2.151Q14.075 2 12 2q-2.05 0-3.875.787q-1.825.788-3.187 2.151Q3.575 6.3 2.788 8.113Q2 9.925 2 12q0 1.825.6 3.463q.6 1.637 1.7 2.937Z">
@@ -91,7 +91,8 @@
                         </div>
                         <div class="head-bio flex space-x-6 p-6">
                             <h1 class="font-bold font-oswald text-lg">bio:</h1>
-                            <p class="text-justify font-robot text-md text-lg ">dventurous soul with a passion for exploring the
+                            <p class="text-justify font-robot text-md text-lg ">dventurous soul with a passion for
+                                exploring the
                                 unknown.
                                 Enthusiastic traveler, amateur photographer, and aspiring foodie.</p>
                         </div>
@@ -140,7 +141,7 @@
                         </div>
 
                     </div>
-                    
+
                     <div v-if="logoutdialog" class="dialog-overlay">
                         <div class="dialog">
                             <h3>Confirm Logout</h3>
@@ -354,63 +355,76 @@
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            headerBackgroundColor: 'rgba(255, 255, 255, 0.55)',
-            login: false,
-            userClick: false,
-            logoutdialog: false,
-            profiledialog: false,
-            form: {
-                username: '',
-                password: '',
-                confirmPassword: '',
-            },
-        };
-    },
-    mounted() {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    destroyed() {
-        window.removeEventListener('scroll', this.handleScroll);
-    },
-    methods: {
-        handleScroll() {
-            if (window.scrollY > 100) {
-                this.headerBackgroundColor = '#fff';
-            } else {
-                this.headerBackgroundColor = 'rgba(255, 255, 255, 0.55)';
-            }
-        },
-        toggleUserProfile() {
-            this.userClick = !this.userClick;
-        },
-        confirmLogout() {
-            this.$router.push('/login');
-        },
-        logoutdialogmethod() {
-            this.logoutdialog = !this.logoutdialog;
-        },
-        Editdialogmethod() {
-            this.profiledialog = !this.profiledialog;
-        },
-        closeModal() {
-            this.$emit('close');
-        },
-        updateProfile() {
-            if (this.form.password !== this.form.confirmPassword) {
-                alert("Passwords do not match!");
-                return;
-            }
-            this.form.username = '';
-            this.form.password = '';
-            this.form.confirmPassword = '';
-            this.closeModal();
-        },
+<script setup>
+import { ref, reactive, onMounted, onBeforeUnmount } from 'vue';
+import { useAuthStore } from '../stores/auth';
+import { useRouter } from 'vue-router';
+
+const headerBackgroundColor = ref('rgba(255, 255, 255, 0.55)');
+const login = ref(true);
+const userClick = ref(false);
+const logoutdialog = ref(false);
+const profiledialog = ref(false);
+const form = reactive({
+    username: '',
+    password: '',
+    confirmPassword: '',
+});
+const authStore = useAuthStore();
+const router = useRouter();
+
+const handleScroll = () => {
+    if (window.scrollY > 100) {
+        headerBackgroundColor.value = '#fff';
+        console.log(authStore.accessToken)
+    } else {
+        headerBackgroundColor.value = 'rgba(255, 255, 255, 0.55)';
     }
 };
+
+// User actions
+const toggleUserProfile = () => {
+    userClick.value = !userClick.value;
+};
+
+const confirmLogout = () => {
+    router.push('/login');
+};
+
+const logoutdialogmethod = () => {
+    logoutdialog.value = !logoutdialog.value;
+};
+
+const Editdialogmethod = () => {
+    profiledialog.value = !profiledialog.value;
+};
+
+const closeModal = () => {
+    // Emit a custom event if necessary
+    // Use `emit` function for emits in <script setup> if needed
+};
+
+const updateProfile = () => {
+    if (form.password !== form.confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+    form.username = '';
+    form.password = '';
+    form.confirmPassword = '';
+    closeModal();
+};
+
+// Lifecycle hooks
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+    const token = authStore.accessToken;
+    login.value = !token;
+});
+
+onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
 </script>
 
 <style>

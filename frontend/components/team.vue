@@ -9,7 +9,8 @@
                     et
                     dolore magna.
                     Lorem ipsum dolor sit
-                    amet</p>
+                    amet
+                </p>
             </div>
         </div>
         <div class="about-link-div">
@@ -50,7 +51,7 @@
 export default {
     props: {
         member: {
-            type: Array,
+            type: Object,
             Required: true
         }
     }
