@@ -30,7 +30,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from 'axios';
+const { $axios } = useNuxtApp();
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '~~/stores/auth';
 
@@ -41,20 +41,14 @@ const password = ref('');
 
 const handleLogin = async () => {
     try {
-        const response = await axios.post('http://127.0.0.1:8000/api/token/', {
-            username: username.value,
-            password: password.value
-        });
-
-        // Extract tokens from the response
-
-        // Store the refresh token in an HttpOnly cookie
-        document.cookie = `refresh_token=${response.data.refresh}; HttpOnly; Secure; SameSite=Strict`;
-
-        // Store access token in memory (or a variable in your state management system)
-        authStore.setAccessToken(response.data.access);
-
-        // Redirect to the desired page
+        const response = await $axios.post(
+            'token/', 
+            {
+                username: username.value,
+                password: password.value
+            }
+        );
+        
         router.push('/');
     } catch (error) {
         console.error('Login failed:', error);

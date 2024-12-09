@@ -1,86 +1,180 @@
-from django.shortcuts import render
 from rest_framework.response import Response
-from django.contrib.auth.models import User
 from rest_framework.views import APIView
-from .serializers import UserSerializer, SavingsSerializer, EqubGroupSerializer, EqubMembershipSerializer, BlogSerializer, TransactionSerializer
+from .serializers import BlogSerializer, EqubGroupSerializer, EqubMembershipSerializer, SavingsSerializer, TransactionSerializer, ProfileSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from .models import Savings, EqubGroup, EqubMembership, Blog, Transaction
+from .models import Savings, EqubMembership, Blog, Transaction, ProfileUser
+from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
+from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.views import TokenRefreshView
+from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from rest_framework import status
 
+class CookieTokenObtainPairView(TokenObtainPairView):
+    permission_classes = [AllowAny]
+
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        data = response.data
+        
+        # Set tokens in cookies
+        response.set_cookie(
+            key='access_token',
+            value=data.get('access'),
+            httponly=True,  # Prevent client-side JavaScript access
+            secure=False,   # Set to True in production with HTTPS
+            samesite='Lax',  # Adjust based on your app's requirements
+            max_age=3600,   # 1 hour
+        )
+        response.set_cookie(
+            key='refresh_token',
+            value=data.get('refresh'),
+            httponly=True,
+            secure=False,   # Set to True in production with HTTPS
+            samesite='Lax',
+            max_age=604800,  # 7 days
+        )
+        
+        # Optionally, remove tokens from response body
+        response.data.pop('access', None)
+        response.data.pop('refresh', None)
+        response.data['message'] = 'Tokens are set in cookies'
+        return response
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        # Clear the access and refresh tokens from cookies
+        response = Response({"message": "Successfully logged out"}, status=status.HTTP_200_OK)
+        response.delete_cookie('access_token')
+        response.delete_cookie('refresh_token')
+        return response
+    
 class UserAPIView(APIView):
-    serializer_class = UserSerializer
+    authentication_classes = [JWTAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        user = request.user
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+        user = request.user  # User is available via JWT authentication
+        if not user.is_authenticated:
+            raise AuthenticationFailed('User is not authenticated!')
+
+        # Serialize user data
+        return Response({
+            'id': user.id,
+            'username': user.username,
+        })
+    
+class UserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        try:
+            # Fetch the profile associated with the logged-in user
+            profile = ProfileUser.objects.get(user=request.user)
+            serializer = ProfileSerializer(profile)
+            return Response(serializer.data, status=200)
+        except ProfileUser.DoesNotExist:
+            return Response({'error': 'Profile not found'}, status=404)
+
+class UpdateUserProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def patch(self, request):
+        try:
+            # Retrieve the authenticated user's profile
+            profile = ProfileUser.objects.get(user=request.user)
+            serializer = ProfileSerializer(profile, data=request.data, partial=True)
+            
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except ProfileUser.DoesNotExist:
+            return Response({'error': 'Profile not found'}, status=status.HTTP_404_NOT_FOUND)
+
+class CustomTokenRefreshView(TokenRefreshView):
+    def post(self, request, *args, **kwargs):
+        # Extract refresh token from cookies
+        refresh_token = request.COOKIES.get('refresh_token')
+        
+        if not refresh_token:
+            return Response(
+                {"detail": "Refresh token is missing in cookies."},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+
+        # Inject refresh token into the request data
+        request.data['refresh'] = refresh_token
+        
+        try:
+            response = super().post(request, *args, **kwargs)
+        except (InvalidToken, TokenError) as e:
+            return Response(
+                {"detail": "Invalid refresh token."},
+                status=status.HTTP_401_UNAUTHORIZED
+            )
+        
+        # Extract the new access token
+        data = response.data
+        access_token = data.get('access')
+        
+        # Set new access token in cookies
+        response.set_cookie(
+            key='access_token',
+            value=access_token,
+            httponly=True,  # Prevent client-side JavaScript access
+            secure=False,   # Set to True in production with HTTPS
+            samesite='Lax', # Adjust based on your app's requirements
+            max_age=3600,   # 1 hour
+        )
+        
+        # Optionally, remove the access token from response body
+        response.data.pop('access', None)
+        response.data['message'] = 'Access token refreshed and set in cookies'
+        return response
 
 class SavingListAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        # Get the authenticated user
-        user = request.user
-
-        # Filter Saving data for the specific user
-        savings = Savings.objects.filter(user=user)
-
-        # Serialize the data
-        serializer = SavingsSerializer(savings, many=True)
-
-        # Return the response with the serialized data
-        return Response(serializer.data)
-    
+        try:
+            # Fetch the profile associated with the logged-in user
+            savings = Savings.objects.filter(user=request.user)
+            serializer = SavingsSerializer(savings, many=True)
+            return Response(serializer.data)
+        except ProfileUser.DoesNotExist:
+            return Response({'error': 'Profile not found'}, status=404)
 
 class UserEqubGroupAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        # Get the authenticated user
-        user = request.user
-
-        # Try to get the EqubMembership for the authenticated user
         try:
-            user_membership = EqubMembership.objects.get(user=user)
+            user_membership = EqubMembership.objects.get(user=request.user)
+            equb_group = user_membership.equb_group
+            serializer = EqubGroupSerializer(equb_group)
+            return Response(serializer.data)
+
         except EqubMembership.DoesNotExist:
             raise NotFound("The user is not a member of any Equb group.")
-
-        # Get the EqubGroup associated with the user's membership
-        equb_group = user_membership.equb_group
-
-        # Serialize the EqubGroup data
-        serializer = EqubGroupSerializer(equb_group)
-
-        # Return the serialized data as a response
-        return Response(serializer.data)
 
 class UserEqubMembershipAPIView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        # Get the authenticated user
         user = request.user
-
-        # Get the user's EqubMembership
         try:
             user_membership = EqubMembership.objects.get(user=user)
         except EqubMembership.DoesNotExist:
             raise NotFound("The user is not a member of any Equb group.")
-
-        # Get the EqubGroup the user is part of
         equb_group = user_membership.equb_group
-
-        # Get all other members of the same EqubGroup (excluding the current user)
         other_memberships = EqubMembership.objects.filter(equb_group=equb_group)
-
-        # Serialize the other memberships
         serializer = EqubMembershipSerializer(other_memberships, many=True)
-
-        # Return the response with the serialized data
         return Response(serializer.data)
-
 
 class BlogPostPagination(PageNumberPagination):
     page_size = 10  # Set the number of blog posts per page
@@ -95,20 +189,15 @@ class BlogPostListAPIView(APIView):
         serializer = BlogSerializer(result_page, many=True)
         return paginator.get_paginated_response(serializer.data)
 
-
 class TransactionListCreate(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        # Get the authenticated user
-        user = request.user
-
-        # Filter Saving data for the specific user
-        transaction = Transaction.objects.filter(user=user)
-
-        # Serialize the data
-        serializer = TransactionSerializer(transaction, many=True)
-
-        # Return the response with the serialized data
-        return Response(serializer.data)
-    
+        try:
+            user = request.user
+            transaction = Transaction.objects.filter(user=user)
+            serializer = TransactionSerializer(transaction, many=True)
+            return Response(serializer.data)
+        
+        except EqubMembership.DoesNotExist:
+            raise NotFound("The user is not a member of any Equb group.")

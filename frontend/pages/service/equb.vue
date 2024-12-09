@@ -51,16 +51,7 @@
         </div>
 
         <div v-else>
-            <div class="items-cener flex justify-center space-x-16">
-                <div class="mt-8"> <img src="../../assets/justforshow.png" />
-                </div>
-                <div class="justify-center flex items-center">
-                    <button
-                        class="bg-white w-34 h-12 text-secondary font-oswald text-xl rounded-sm font-bold hover:bg-primary hover:text-white">
-                        Spin
-                    </button>
-                </div>
-            </div>
+            <SpinWheel />
 
             <div class="font-robot text-primary bg-white grid grid-cols-1 md:grid-cols-2 gap-12 py-4">
                 <div>
@@ -418,14 +409,9 @@
 
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            login: false
-        }
-    }
-}
+<script setup>
+import { ref } from 'vue';
+const login = ref(false);
 </script>
 
 <style>

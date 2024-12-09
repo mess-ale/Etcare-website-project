@@ -43,6 +43,7 @@
                     <nuxt-link to="/about" class="links">ABOUT</nuxt-link>
                     <nuxt-link to="/blog" class="links">BLOG</nuxt-link>
                     <nuxt-link to="/contact" class="links">CONTACT</nuxt-link>
+                    <!-- <nuxt-link to="/MembershipForm" class="links">MEMBERSHIP</nuxt-link> -->
                 </div>
             </div>
 
@@ -54,7 +55,12 @@
                 </svg>
             </div>
 
-            <div v-if="login">
+            <div v-if="login" class="flex space-x-4">                
+                <nuxt-link to="/MembershipForm"
+                    class="xs:text-xs md:text-base flex items-center etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
+                    JOIN US
+                </nuxt-link>
+
                 <nuxt-link to="/login"
                     class="xs:text-xs md:text-base flex items-center etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
                     SIGN IN
@@ -64,9 +70,6 @@
                         </path>
                     </svg>
                 </nuxt-link>
-                <div>
-
-                </div>
             </div>
 
             <div v-else>

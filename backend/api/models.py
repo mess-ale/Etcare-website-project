@@ -1,6 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class ProfileUser(models.Model):
+    profile_id = models.AutoField(primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    age = models.DateField()
+    gender = models.CharField(max_length=255) 
+    country = models.CharField(max_length=255) 
+    first_name = models.CharField(max_length=255, null=True) 
+    last_name = models.CharField(max_length=255, null=True) 
+    user_image = models.ImageField(
+        upload_to='user_images/',  # Directory to store uploaded images
+        blank=True,                # Allow this field to be optional
+        null=True,                 # Allow database to store NULL if no image is uploaded
+        default='default.jpg'      # Default image if none is provided (optional)
+    )
 
 class Savings(models.Model):
     savings_id = models.AutoField(primary_key=True)

@@ -1,29 +1,37 @@
 from rest_framework import serializers
-from .models import Savings, EqubGroup, EqubMembership, Blog, Transaction
+from .models import Savings, EqubGroup, EqubMembership, Blog, Transaction, ProfileUser
 from django.contrib.auth.models import User
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add custom claims
+        token['username'] = user.username
+        return token
 
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(
-        write_only=True,
-        required=True,
-        style={'input_type': 'password'}
-    )
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'password', 'first_name', 'bio', 'last_name', 'gender', 'phone_number')
+        fields = ('id', 'username', 'password')
 
     def create(self, validated_data):
         user = User.objects.create_user(
             username=validated_data['username'],
-            password=validated_data['password'],
-            bio=validated_data['bio'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            gender=validated_data['gender'],
-            phone_number=validated_data['phone_number'],
+            password=validated_data['password']
         )
         return user
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)  # Nested User data
+
+    class Meta:
+        model = ProfileUser
+        fields = ['profile_id', 'user', 'age', 'gender', 'country', 'first_name', 'last_name', 'user_image']
+
 
 class SavingsSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)  # Nested User data
@@ -31,6 +39,7 @@ class SavingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Savings
         fields = ['savings_id', 'user', 'account_balance', 'account_type', 'interest_rate', 'created_at']
+
 
 
 class EqubGroupSerializer(serializers.ModelSerializer):

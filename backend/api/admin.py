@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Savings, EqubGroup, EqubMembership, Blog, Transaction
+from .models import Savings, EqubGroup, EqubMembership, Blog, Transaction, ProfileUser
 
 # Register your models here.
+admin.site.register(ProfileUser)
 admin.site.register(Savings)
 admin.site.register(EqubGroup)
 admin.site.register(EqubMembership)
