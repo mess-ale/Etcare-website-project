@@ -43,7 +43,7 @@
                     <nuxt-link to="/about" class="links">ABOUT</nuxt-link>
                     <nuxt-link to="/blog" class="links">BLOG</nuxt-link>
                     <nuxt-link to="/contact" class="links">CONTACT</nuxt-link>
-                    <!-- <nuxt-link to="/MembershipForm" class="links">MEMBERSHIP</nuxt-link> -->
+                    <nuxt-link to="/MembershipForm" class="links">JOIN US</nuxt-link>
                 </div>
             </div>
 
@@ -55,11 +55,11 @@
                 </svg>
             </div>
 
-            <div v-if="login" class="flex space-x-4">                
-                <nuxt-link to="/MembershipForm"
+            <div v-if="login" class="flex space-x-4">
+                <!-- <nuxt-link to="/MembershipForm"
                     class="xs:text-xs md:text-base flex items-center etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
                     JOIN US
-                </nuxt-link>
+                </nuxt-link> -->
 
                 <nuxt-link to="/login"
                     class="xs:text-xs md:text-base flex items-center etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
@@ -379,7 +379,6 @@ const router = useRouter();
 const handleScroll = () => {
     if (window.scrollY > 100) {
         headerBackgroundColor.value = '#fff';
-        console.log(authStore.accessToken)
     } else {
         headerBackgroundColor.value = 'rgba(255, 255, 255, 0.55)';
     }
@@ -418,8 +417,22 @@ const updateProfile = () => {
     closeModal();
 };
 
+const user = ref({});
+const loading = ref(true);
+const { $axios } = useNuxtApp();
+const error = ref(null);
 // Lifecycle hooks
-onMounted(() => {
+onMounted(async () => {
+    try {
+        const response = await $axios.get('/userlogin/');
+
+        user.value = response.data; // Set user data
+        console.log(user);
+    } catch (err) {
+        error.value = err.response?.data?.detail || err.message; // Handle errors
+    } finally {
+        loading.value = false; // End loading state
+    }
     window.addEventListener('scroll', handleScroll);
     const token = authStore.accessToken;
     login.value = !token;

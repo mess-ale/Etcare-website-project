@@ -80,3 +80,29 @@ class Transaction(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.transaction_type} - {self.amount}"
+
+class UserFormSubmission(models.Model):
+    SAVING_ACCOUNT_CHOICES = [
+        ("Time deposit", "Time deposit"),
+        ("Children Saving", "Children Saving"),
+        ("Business Saving", "Business Saving"),
+    ]
+
+    LOAN_PRODUCT_CHOICES = [
+        ("Business Loan", "Business Loan"),
+        ("Vehicle Loan", "Vehicle Loan"),
+        ("Home Loan", "Home Loan"),
+    ]
+
+    first_name = models.CharField(max_length=255)
+    father_name = models.CharField(max_length=255)
+    grandfather_name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    saving_account = models.CharField(max_length=50, choices=SAVING_ACCOUNT_CHOICES)
+    loan_product = models.CharField(max_length=50, choices=LOAN_PRODUCT_CHOICES, blank=True, null=True)
+    receipt = models.FileField(upload_to="receipts/", blank=True, null=True)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.father_name} - {self.email}"

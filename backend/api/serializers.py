@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Savings, EqubGroup, EqubMembership, Blog, Transaction, ProfileUser
+from .models import Savings, EqubGroup, EqubMembership, Blog, Transaction, ProfileUser, UserFormSubmission
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -71,3 +71,8 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = ['transaction_id', 'user', 'transaction_type', 'amount', 'transaction_date']
+
+class UserFormSubmissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserFormSubmission
+        fields = "__all__"
