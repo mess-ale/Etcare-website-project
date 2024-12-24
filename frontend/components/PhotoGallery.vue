@@ -1,10 +1,13 @@
 <template>
-    <div class="photo-gallary">
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-2 items-center justify-center">
-            <img v-for="(photo, index) in photos" :key="index" :src="photo.url" alt="Photo" class="hover-photo" @click="showPhoto(index)">
-        </div>
-        <div v-if="selectedPhoto !== null" class="modal" @click="closeModal">
-            <img :src="photos[selectedPhoto].url" alt="Selected Photo" class="modal-img">
+    <div class="body-padding_margin">
+        <div class="py-8">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-center justify-center">
+                <img v-for="(photo, index) in photos" :key="index" :src="photo.url" alt="Photo" class="hover-photo"
+                    @click="showPhoto(index)">
+            </div>
+            <div v-if="selectedPhoto !== null" class="modal" @click="closeModal">
+                <img :src="photos[selectedPhoto].url" alt="Selected Photo" class="modal-img">
+            </div>
         </div>
     </div>
 </template>
@@ -35,17 +38,17 @@ export default {
 </script>
 
 <style>
-.photo-gallary {
-    padding: 3rem 4rem;
-}
 .hover-photo {
     cursor: pointer;
-    height: 290px;
-    width: 260px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
     transition: transform 0.3s ease-in-out;
 }
- .hover-photo:hover {
-  transform: scale(1.05);
+
+.hover-photo:hover {
+    transform: scale(1.05);
 }
 
 .modal {
@@ -59,7 +62,9 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 11;
-}.modal-img {
+}
+
+.modal-img {
     width: 60%;
     height: 80%;
 }

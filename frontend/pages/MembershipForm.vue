@@ -3,16 +3,16 @@
         <ServiceCard text="Membership Form" imgservice="../_nuxt/assets/form.jpg" />
 
         <div
-            class="my-div max-w-4xl pb-4 mb-12 mx-auto p-6 bg-white text-primary shadow-md bb-primary rounded-md justify-between flex font-robot">
-            <nuxt-link class="links" to="#bank">Bank Accounts</nuxt-link>
-            <nuxt-link class="links" to="#eligibility">Eligibility Criteria</nuxt-link>
-            <nuxt-link class="links" to="#benefits">Benefits of Membership</nuxt-link>
-            <nuxt-link class="links" to="#becoming">Becoming a Member</nuxt-link>
+            class="my-div max-w-4xl pb-4 mb-12 mx-auto p-6 bg-white text-primary shadow-md bb-primary rounded-md justify-between flex font-robot gap-2">
+            <nuxt-link class="links xxxs:text-sm md:text-lg" to="#bank">Bank Accounts</nuxt-link>
+            <nuxt-link class="links xxxs:text-sm md:text-lg" to="#eligibility">Eligibility Criteria</nuxt-link>
+            <nuxt-link class="links xxxs:text-sm md:text-lg" to="#benefits">Benefits of Membership</nuxt-link>
+            <nuxt-link class="links xxxs:text-sm md:text-lg" to="#becoming">Becoming a Member</nuxt-link>
         </div>
 
         <div class="my-div max-w-4xl pb-8 mb-12 mx-auto p-6 bg-white text-primary shadow-md rounded-md font-robot">
 
-            <h2 class="text-3xl font-bold text-center text-secondary mb-12 font-oswald">EtCare Membership Form</h2>
+            <h2 class="xxxs:text-2xl md:text-3xl font-bold text-center text-secondary mb-12 font-oswald">EtCare Membership Form</h2>
             <form @submit.prevent="handleSubmit">
                 <!-- Personal Details -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
@@ -78,7 +78,6 @@
                     </div>
                 </fieldset>
 
-                <!-- Loan Products -->
                 <fieldset class="mb-6">
                     <legend class="text-sm font-medium text-primary mb-2">Loan Products</legend>
                     <div class="flex space-x-4">
@@ -100,7 +99,6 @@
                     </div>
                 </fieldset>
 
-                <!-- File Upload -->
                 <div class="mb-6">
                     <label for="receipt" class="block text-sm font-medium text-primary">Attach Receipt of Bank
                         Deposit:</label>
@@ -109,7 +107,6 @@
                         @change="handleFileUpload" />
                 </div>
 
-                <!-- Submit Button -->
                 <div>
                     <button type="submit"
                         class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
@@ -121,7 +118,7 @@
 
         <div id="bank" class="my-div max-w-4xl pb-8 mb-12 mx-auto p-6 bg-white text-primary shadow-md rounded-md">
             <h1 class="font-bold font-oswald text-secondary text-xl">Bank Accounts</h1>
-            <ul class="bg-white shadow-md rounded-lg w-3/4 max-w-lg">
+            <ul class="bg-white shadow-md rounded-lg md:w-3/4 max-w-lg">
                 <li class="border-b border-gray-200 p-4">
                     <span class="font-medium text-gray-700">Commercial Bank Of Ethiopia</span>
                     <span class="block font-semibold">1000524668347</span>

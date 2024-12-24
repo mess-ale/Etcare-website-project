@@ -1,16 +1,16 @@
 <template>
     <div>
         <ServiceCard text="About" imgservice="../_nuxt/assets/service/about.png" />
-        <div class="about-mar_pad">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 about-border">
+        <div class="body-padding_margin">
+            <div class="grid grid-cols-1 md:grid-cols-2 xxxs:gap-4 md:gap-8 about-border xxxs:p-6 md:p-12">
                 <div >
                     <img src="../assets/service/building.png" class="about-image" alt="building" />
                 </div>
-                <div class="space-y-8">
-                    <h1 class="text-primary font-bold text-justify text-xl">Etcare SACCOs Ltd is a leading financial cooperative
+                <div class="xxxs:space-y-4 md:space-y-8">
+                    <h1 class="text-primary font-bold text-justify xxxs:text-base md:text-xl">Etcare SACCOs Ltd is a leading financial cooperative
                         dedicated to empowering individuals and
                         communities through innovative financial solutions.</h1>
-                    <p class="text-primary text-justify text-lg">We are driven by the mission of financial literacy and
+                    <p class="text-primary text-justify xxxs:text-sm md:text-lg">We are driven by the mission of financial literacy and
                         inclusion, ensuring that every member has
                         access to the knowledge and resources needed to make sound financial decisions. Through
                         education
@@ -24,11 +24,11 @@
                 </div>
             </div>
 
-            <div class="pt-8 pb-8 space-y-8">
-                <h1 class="text-secondary text-oswald font-bold text-5xl text-center">About us</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="pt-8 pb-8 xxxs:space-y-4 md:space-y-8">
+                <h1 class="text-secondary text-oswald font-bold xxxs:text-3xl md:text-4xl xl:text-5xl text-center">About us</h1>
+                <div class="grid grid-cols-1 md:grid-cols-2 xxxs:gap-4 md:gap-8">
                     <div class="flex items-center">
-                        <p class="text-primary font-robot text-justify text-xl">At Etcare SACCOs Ltd, we're known for
+                        <p class="text-primary font-robot text-justify xxxs:text-base md:text-xl">At Etcare SACCOs Ltd, we're known for
                             our professionalism and dedication in finance. Our main
                             goal is to become the best savings and credit cooperative society by 2020, helping our
                             members
@@ -52,10 +52,10 @@
 
         <div class="Our-Best-Quality">
             <div class="about-mar_pad pt-12 pb-14 space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 ">
+                <div class="grid grid-cols-1 md:grid-cols-2 xxxs:gap-4 md:gap-8 ">
                     <div class="space-y-4">
-                        <h1 class="text-secondary font-oswald font-bold text-4xl">Our Best Quality</h1>
-                        <p class="text-primary font-robot text-justify text-lg">At Etcare SACCOs Ltd, we pride ourselves on
+                        <h1 class="text-secondary font-oswald font-bold  xxxs:text-3xl md:text-4xl xl:text-5xl ">Our Best Quality</h1>
+                        <p class="text-primary font-robot text-justify xxxs:text-sm md:text-lg">At Etcare SACCOs Ltd, we pride ourselves on
                             delivering exceptional quality in every aspect of
                             our
                             services. Our commitment to excellence is driven by a deep understanding of our members'
@@ -80,12 +80,12 @@
                 </div>
             </div>
         </div>
-        <div class="about-mar_pad space-y-2 pt-16 pb-32">
-            <h1 class="text-primary font-bold font-oswald text-center text-4xl">OUR TEAM</h1>
-            <p class="text-primary text-lg font-robot text-center">The Hardworking Team behind Etcare SACCO</p>
+        <div class=" pt-16 pb-32">
+        <div class="body-padding_margin space-y-2">
+            <h1 class="text-primary font-bold font-oswald text-center  xxxs:text-3xl md:text-4xl xl:text-5xl ">OUR TEAM</h1>
+            <p class="text-primary xxxs:text-sm md:text-lg font-robot text-center">The Hardworking Team behind Etcare SACCO</p>
 
-            <div class="flex justify-between items-center gap-4 team-staff">
-                <!-- Left Arrow -->
+            <div class="flex justify-between items-center xxxs:gap-2 md:gap-4 team-staff">
                 <div class="text-secondary arrow-back" @click="prevTeam"
                     :class="{ 'opacity-50 pointer-events-none': startIndex === 0 }">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
@@ -95,10 +95,8 @@
                     </svg>
                 </div>
 
-                <!-- Display only 4 Team components at a time -->
                 <team v-for="(member, index) in visibleTeamMembers" :key="index" :member="member" />
 
-                <!-- Right Arrow -->
                 <div class="text-secondary arrow-forward" @click="nextTeam"
                     :class="{ 'opacity-50 pointer-events-none': endIndex >= teamMembers.length }">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
@@ -108,12 +106,12 @@
                     </svg>
                 </div>
             </div>
-        </div>
+        </div></div>
     </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 const teamMembers = ref([
     { name: 'Hnana', role: 'Role 1' },
@@ -126,9 +124,32 @@ const teamMembers = ref([
 ]);
 
 const startIndex = ref(0);
-const teamDisplayLimit = 4;
+const teamDisplayLimit = ref(1);
 
-const endIndex = computed(() => startIndex.value + teamDisplayLimit);
+function updateTeamDisplayLimit() {
+  const width = window.innerWidth;
+
+  if (width >= 1024) { // lg breakpoint
+    teamDisplayLimit.value = 4;
+  } else if (width >= 768) { // md breakpoint
+    teamDisplayLimit.value = 3;
+  } else if (width >= 640) { // sm breakpoint
+    teamDisplayLimit.value = 2;
+  } else {
+    teamDisplayLimit.value = 1;
+  }
+}
+
+onMounted(() => {
+  updateTeamDisplayLimit();
+  window.addEventListener('resize', updateTeamDisplayLimit);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateTeamDisplayLimit);
+});
+
+const endIndex = computed(() => startIndex.value + teamDisplayLimit.value);
 const visibleTeamMembers = computed(() => teamMembers.value.slice(startIndex.value, endIndex.value));
 
 function nextTeam() {
@@ -182,7 +203,6 @@ function prevTeam() {
 .about-border {
     border: 2px solid theme('colors.secondary');
     border-radius: 20px;
-    padding: 2rem;
 }
 
 .about-image {

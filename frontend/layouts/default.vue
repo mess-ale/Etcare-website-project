@@ -1,68 +1,131 @@
 <template>
     <div class="web-body">
-        <header :style="{ backgroundColor: headerBackgroundColor }"
-            class="fixed top-0 left-0 right-0 z-10 w-full flex items-center justify-between text-primary
-            xs:h-12 sm:h-16 md:h-20 xl:h-24 xs:pl-8 sm:pl-10 md:pl-12 xl:pl-16 xs:pr-8 sm:pr-10 md:pr-12 xl:pr-14 header1">
-            <div>
-                <nuxt-link to="/"><img class="w-full h-auto max-w-[65%] md:max-w-full"
+        <header :style="{ backgroundColor: headerBackgroundColor }" class="fixed top-0 left-0 right-0 z-10 w-full flex items-center justify-between text-primary
+            body-padding_margin xxxs:h-20 md:h-24">
+            <div class="w-1/4">
+                <nuxt-link to="/"><img class="xxxs:w-24 xxxxs:h-8 xxxs:h-10 sm:w-32 sm:h-12 md:w-34 md:h-16 md:w-34 md:h-16"
                         src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" /></nuxt-link>
             </div>
 
-            <div class="hidden md:inline xs:text-xs md:text-base">
-                <div class="space-x-7 flex item-center font-bold">
-                    <nuxt-link to="/" class="links">HOME</nuxt-link>
-                    <div class="flex items-center dropdown-link">
-                        <nuxt-link to="/service" class="links">SERVICE</nuxt-link>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
-                            class="ml-1">
-                            <path fill="currentColor" d="m5 8l7 8l7-8z"></path>
-                        </svg>
-                        <ul class="dropdown font-bold font-Roboto">
-                            <nuxt-link to="/service/saving">
-                                <li>
-                                    Saving
-                                </li>
-                            </nuxt-link>
-                            <nuxt-link to="/service/equb">
-                                <li>
-                                    equb
-                                </li>
-                            </nuxt-link>
-                            <nuxt-link to="/service/loan">
-                                <li>
-                                    Loan
-                                </li>
-                            </nuxt-link>
-                            <nuxt-link to="/service/training">
-                                <li>
-                                    training
-                                </li>
-                            </nuxt-link>
-                        </ul>
+            <div class="w-2/4 hidden lg:inline ">
+                <div class="lg:text-sm flex justify-center items-center xl:text-base">
+                    <div class="lg:space-x-6 xxl:space-x-8 flex item-center font-bold">
+                        <nuxt-link to="/" class="links">HOME</nuxt-link>
+                        <div class="flex items-center dropdown-link">
+                            <nuxt-link to="/service" class="links">SERVICE</nuxt-link>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
+                                class="ml-1">
+                                <path fill="currentColor" d="m5 8l7 8l7-8z"></path>
+                            </svg>
+                            <ul class="dropdown font-bold font-Roboto">
+                                <nuxt-link to="/service/saving">
+                                    <li>
+                                        Saving
+                                    </li>
+                                </nuxt-link>
+                                <nuxt-link to="/service/equb">
+                                    <li>
+                                        equb
+                                    </li>
+                                </nuxt-link>
+                                <nuxt-link to="/service/loan">
+                                    <li>
+                                        Loan
+                                    </li>
+                                </nuxt-link>
+                                <nuxt-link to="/service/training">
+                                    <li>
+                                        training
+                                    </li>
+                                </nuxt-link>
+                            </ul>
+                        </div>
+                        <nuxt-link to="/about" class="links">ABOUT</nuxt-link>
+                        <nuxt-link to="/blog" class="links">BLOG</nuxt-link>
+                        <nuxt-link to="/contact" class="links">CONTACT</nuxt-link>
+                        <nuxt-link to="/MembershipForm" class="links">JOIN US</nuxt-link>
                     </div>
-                    <nuxt-link to="/about" class="links">ABOUT</nuxt-link>
-                    <nuxt-link to="/blog" class="links">BLOG</nuxt-link>
-                    <nuxt-link to="/contact" class="links">CONTACT</nuxt-link>
-                    <nuxt-link to="/MembershipForm" class="links">JOIN US</nuxt-link>
                 </div>
             </div>
 
-            <div class="md:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
-                    <path fill="currentColor"
-                        d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z">
-                    </path>
-                </svg>
+            <div class="w-2/4 lg:hidden flex justify-center items-center">
+                <button @click="toggleMenu" aria-label="Toggle Menu">
+                    <svg v-if="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em"
+                        viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M4 18q-.425 0-.712-.288T3 17t.288-.712T4 16h16q.425 0 .713.288T21 17t-.288.713T20 18zm0-5q-.425 0-.712-.288T3 12t.288-.712T4 11h16q.425 0 .713.288T21 12t-.288.713T20 13zm0-5q-.425 0-.712-.288T3 7t.288-.712T4 6h16q.425 0 .713.288T21 7t-.288.713T20 8z">
+                        </path>
+                    </svg>
+
+                    <svg v-if="isMenuOpen" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" class="font-bold"
+                        viewBox="0 0 24 24">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="1.5" d="m5 19l7-7m0 0l7-7m-7 7L5 5m7 7l7 7"></path>
+                    </svg>
+                </button>
             </div>
 
-            <div v-if="login" class="flex space-x-4">
+            <div v-if="isMenuOpen" class="absolute top-16 z-100 left-0 w-full bg-gray-100 lg:hidden shadow-lg z-10">
+                <ul class="space-y-4 items-center py-2 font-bold text-center">
+                    <li class="border-b-2">
+                        <nuxt-link to="/" @click="closeMenu">HOME</nuxt-link>
+                    </li>
+                    <li class="border-b-2 flex justify-center items-center">
+                        <nuxt-link to="/service" @click="closeMenu">SERVICE</nuxt-link>
+                        <svg @click="toggleMenuservice" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                            viewBox="0 0 24 24" class="ml-1">
+                            <path fill="currentColor" d="m5 8l7 8l7-8z"></path>
+                        </svg>
+                        <div v-if="openMenuService"
+                            class="absolute top-16 z-100 left-0 w-full bg-gray-300 lg:hidden shadow-lg z-10">
+                            <ul class="space-y-4 py-2 font-bold text-center">
+                                <li @click="closeMenuservice" class="border-b-2">
+                                    <nuxt-link to="/service/saving">
+                                        Saving
+                                    </nuxt-link>
+                                </li>
+                                <li @click="closeMenuservice" class="border-b-2">
+                                    <nuxt-link to="/service/equb">
+                                        equb
+                                    </nuxt-link>
+                                </li>
+                                <li @click="closeMenuservice" class="border-b-2">
+                                    <nuxt-link to="/service/loan">
+                                        Loan
+                                    </nuxt-link>
+                                </li>
+                                <li @click="closeMenuservice">
+                                    <nuxt-link to="/service/training">
+                                        training
+                                    </nuxt-link>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="border-b-2">
+                        <nuxt-link to="/about" @click="closeMenu">ABOUT</nuxt-link>
+                    </li>
+                    <li class="border-b-2">
+                        <nuxt-link to="/blog" @click="closeMenu">BLOG</nuxt-link>
+                    </li>
+                    <li class="border-b-2">
+                        <nuxt-link to="/contact" @click="closeMenu">CONTACT</nuxt-link>
+                    </li>
+                    <li>
+                        <nuxt-link to="/MembershipForm" @click="closeMenu">JOIN US</nuxt-link>
+                    </li>
+                </ul>
+            </div>
+
+            <div v-if="login" class="w-1/4 flex space-x-4 justify-end">
                 <!-- <nuxt-link to="/MembershipForm"
                     class="xs:text-xs md:text-base flex items-center etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
                     JOIN US
                 </nuxt-link> -->
 
                 <nuxt-link to="/login"
-                    class="xs:text-xs md:text-base flex items-center etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
+                    class="xxxs:text-xs md:text-base flex etcare-button xxxs:pt-1 xxxs:pb-1 xxxs:pl-2 xxxs:pr-2 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
                     SIGN IN
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -72,7 +135,7 @@
                 </nuxt-link>
             </div>
 
-            <div v-else>
+            <div class="w-1/4" v-else>
                 <div class="items-center flex space-x-2 user-profile hover:text-secondary" @click="toggleUserProfile">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -208,7 +271,7 @@
         </div>
 
         <footer class="bg-primary text-white">
-            <div class="footerpadding">
+            <div class="body-padding_margin">
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4 pt-10 pb-10">
 
                     <div class="space-y-3 ">
@@ -299,7 +362,7 @@
                             account username and password.</h5>
                         <div class="flex justify-center pt-5">
                             <nuxt-link to="/contact"
-                                class="etcare-button xs:pt-1 xs:pb-1 xs:pl-5 xs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 footer-button flex items-center space-x-4">
+                                class="etcare-button xs:pt-1 xxxs:pb-1 xxxs:pl-5 xxxs:pr-5 md:pt-2 md:pb-2 md:pl-8 md:pr-8 footer-button flex items-center space-x-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 20 20">
                                     <path fill="currentColor"
                                         d="M17 11v3l-3-3H8a2 2 0 0 1-2-2V2c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2zm-3 2v2a2 2 0 0 1-2 2H6l-3 3v-3H2a2 2 0 0 1-2-2V8c0-1.1.9-2 2-2h2v3a4 4 0 0 0 4 4z">
@@ -344,14 +407,16 @@
                 </div>
             </div>
 
-            <div class="textcopy w-full flex items-center justify-between text-primary">
-                <div>
-                    <nuxt-link to="/"> <img src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" />
-                    </nuxt-link>
-                </div>
-                <div>
-                    <nuxt-link to="/Privacy" class="links">Privacy Policy</nuxt-link>
-                    <h4 class="font-bold">© 2024 by EtCare Sacco. All Rights Reserved.</h4>
+            <div
+                class="textcopy body-padding_margin ">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xxxs:py-4 justify-around w-full items-center text-primary md:py-8">
+                    <div>
+                        <nuxt-link to="/"> <img src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" />
+                        </nuxt-link>
+                    </div>
+                    <div>
+                        <h4 class="font-bold md:text-end">© 2024 by EtCare Sacco. All Rights Reserved.</h4>
+                    </div>
                 </div>
             </div>
         </footer>
@@ -368,6 +433,8 @@ const login = ref(true);
 const userClick = ref(false);
 const logoutdialog = ref(false);
 const profiledialog = ref(false);
+const isMenuOpen = ref(false);
+const openMenuService = ref(false);
 const form = reactive({
     username: '',
     password: '',
@@ -383,6 +450,23 @@ const handleScroll = () => {
         headerBackgroundColor.value = 'rgba(255, 255, 255, 0.55)';
     }
 };
+
+const toggleMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value;
+}
+
+const closeMenu = () => {
+    isMenuOpen.value = !isMenuOpen.value;
+    openMenuService.value = false;
+}
+const toggleMenuservice = () => {
+    openMenuService.value = !openMenuService.value;
+}
+
+const closeMenuservice = () => {
+    openMenuService.value = !openMenuService.value;
+    isMenuOpen.value = false;
+}
 
 // User actions
 const toggleUserProfile = () => {
@@ -423,16 +507,16 @@ const { $axios } = useNuxtApp();
 const error = ref(null);
 // Lifecycle hooks
 onMounted(async () => {
-    try {
-        const response = await $axios.get('/userlogin/');
+    // try {
+    //     const response = await $axios.get('/userlogin/');
 
-        user.value = response.data; // Set user data
-        console.log(user);
-    } catch (err) {
-        error.value = err.response?.data?.detail || err.message; // Handle errors
-    } finally {
-        loading.value = false; // End loading state
-    }
+    //     user.value = response.data; // Set user data
+    //     console.log(user);
+    // } catch (err) {
+    //     error.value = err.response?.data?.detail || err.message; // Handle errors
+    // } finally {
+    //     loading.value = false; // End loading state
+    // }
     window.addEventListener('scroll', handleScroll);
     const token = authStore.accessToken;
     login.value = !token;
@@ -444,6 +528,30 @@ onBeforeUnmount(() => {
 </script>
 
 <style>
+@media (min-width: 200px) {
+    .body-padding_margin {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (min-width: 500px) {
+    .body-padding_margin {
+        padding: 0 2.25rem;
+    }
+}
+
+@media (min-width: 800px) {
+    .body-padding_margin {
+        padding: 0 3.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .body-padding_margin {
+        padding: 0 5rem;
+    }
+}
+
 .user-profile-drawer {
     position: absolute;
     top: 0;
@@ -507,8 +615,6 @@ onBeforeUnmount(() => {
 
 .textcopy {
     background-color: theme('colors.background');
-    height: 100px;
-    padding: 0 4rem;
 }
 
 .footerpadding {

@@ -11,46 +11,47 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from rest_framework import status
+from rest_framework_simplejwt.views import TokenObtainPairView
 
-class CookieTokenObtainPairView(TokenObtainPairView):
-    permission_classes = [AllowAny]
-
+class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
         response = super().post(request, *args, **kwargs)
         data = response.data
-        
-        # Set tokens in cookies
+
+        # Set cookies for access and refresh tokens
         response.set_cookie(
-            key='access_token',
-            value=data.get('access'),
-            httponly=True,  # Prevent client-side JavaScript access
-            secure=False,   # Set to True in production with HTTPS
-            samesite='Lax',  # Adjust based on your app's requirements
-            max_age=3600,   # 1 hour
+        key='access',
+        value=data.get('access'),
+        httponly=True,
+        secure=False,  # Set to True in production for HTTPS
+        samesite='Lax',  # Use 'Lax' to allow cross-origin cookies in non-top-level navigation
+        max_age=1800,
         )
+
         response.set_cookie(
-            key='refresh_token',
+            key='refresh',
             value=data.get('refresh'),
             httponly=True,
-            secure=False,   # Set to True in production with HTTPS
+            secure=False,  # Set to True in production for HTTPS
             samesite='Lax',
-            max_age=604800,  # 7 days
+            max_age=86400,
         )
-        
-        # Optionally, remove tokens from response body
-        response.data.pop('access', None)
-        response.data.pop('refresh', None)
-        response.data['message'] = 'Tokens are set in cookies'
+
+
+        # Remove tokens from the response body for security
+        del response.data['access']
+        del response.data['refresh']
+
         return response
 
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
-        # Clear the access and refresh tokens from cookies
+
         response = Response({"message": "Successfully logged out"}, status=status.HTTP_200_OK)
-        response.delete_cookie('access_token')
-        response.delete_cookie('refresh_token')
+        response.delete_cookie('accessToken')
+        response.delete_cookie('refreshToken')
         return response
     
 class UserAPIView(APIView):
@@ -99,16 +100,16 @@ class UpdateUserProfileView(APIView):
 class CustomTokenRefreshView(TokenRefreshView):
     def post(self, request, *args, **kwargs):
         # Extract refresh token from cookies
-        refresh_token = request.COOKIES.get('refresh_token')
+        refreshToken = request.COOKIES.get('refreshToken')
         
-        if not refresh_token:
+        if not refreshToken:
             return Response(
                 {"detail": "Refresh token is missing in cookies."},
                 status=status.HTTP_401_UNAUTHORIZED
             )
 
         # Inject refresh token into the request data
-        request.data['refresh'] = refresh_token
+        request.data['refresh'] = refreshToken
         
         try:
             response = super().post(request, *args, **kwargs)
@@ -120,12 +121,12 @@ class CustomTokenRefreshView(TokenRefreshView):
         
         # Extract the new access token
         data = response.data
-        access_token = data.get('access')
+        accessToken = data.get('access')
         
         # Set new access token in cookies
         response.set_cookie(
-            key='access_token',
-            value=access_token,
+            key='accessToken',
+            value=accessToken,
             httponly=True,  # Prevent client-side JavaScript access
             secure=False,   # Set to True in production with HTTPS
             samesite='Lax', # Adjust based on your app's requirements

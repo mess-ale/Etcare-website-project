@@ -5,11 +5,7 @@
             <div class="text-primary">
                 <h1 class="font-oswald font-bold">{{ member.name }}</h1>
                 <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore
-                    et
-                    dolore magna.
-                    Lorem ipsum dolor sit
-                    amet
+                    incididunt ut labore et dolore magna. Lorem ipsum dolor sit amet
                 </p>
             </div>
         </div>

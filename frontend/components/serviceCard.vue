@@ -1,7 +1,7 @@
 <template>
     <div class="cover" :style= "{backgroundImage : `url(${imgservice})` }" >
         <div class="text">
-            <h1 class="text-secondary font-oswald font-bold text-5xl">{{ text }}</h1>
+            <h1 class="text-secondary font-oswald font-bold xxxs:text-3xl md:text-5xl">{{ text }}</h1>
         </div>
     </div>
     <img src="../assets/Group 40.png" class="pt-4 pb-12 image-class" alt="line header" />

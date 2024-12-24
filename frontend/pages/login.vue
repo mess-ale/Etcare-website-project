@@ -42,13 +42,25 @@ const password = ref('');
 const handleLogin = async () => {
     try {
         const response = await $axios.post(
-            'token/', 
+            '/token/',
             {
                 username: username.value,
                 password: password.value
             }
         );
-        
+        try {
+            const response = await $axios.get('/userlogin/', null, {
+                withCredentials: true,
+            });
+
+            console.log(response.data);
+        } catch (err) {
+            console.log("this is error of etcare", err)
+        }
+
+        // useCookie('accessToken').value = response.data.access;  // Store token in cookies
+        // useCookie('refreshToken').value = response.data.refresh;
+        console.log(response)
         router.push('/');
     } catch (error) {
         console.error('Login failed:', error);

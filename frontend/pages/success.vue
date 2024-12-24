@@ -26,7 +26,7 @@
       <!-- Back Button -->
       <nuxt-link
         to="/"
-        class="etcare-button p-4 px-12"
+        class="etcare-button xxxs:p-2 md:p-4 xxxs:text-xs md:text-base"
       >
         Back to Home
       </nuxt-link>

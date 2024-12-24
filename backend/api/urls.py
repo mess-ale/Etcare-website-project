@@ -1,8 +1,9 @@
 from django.urls import path
-from api.views import  BlogPostListAPIView, SavingListAPIView, TransactionListCreate, UserEqubMembershipAPIView, UserFormSubmissionView, UserProfileView, UserAPIView, LogoutView, CookieTokenObtainPairView, UserEqubGroupAPIView, CustomTokenRefreshView, UpdateUserProfileView
+from rest_framework_simplejwt.views import TokenObtainPairView
+from api.views import  CustomTokenObtainPairView, BlogPostListAPIView, SavingListAPIView, TransactionListCreate, UserEqubMembershipAPIView, UserFormSubmissionView, UserProfileView, UserAPIView, LogoutView, UserEqubGroupAPIView, CustomTokenRefreshView, UpdateUserProfileView
 
 urlpatterns = [
-    path('token/', CookieTokenObtainPairView.as_view(), name= 'get_token'),
+    path('token/', CustomTokenObtainPairView.as_view(), name= 'get_token'),
     path('token/refresh/', CustomTokenRefreshView.as_view(), name='get_refresh'),
     path('logout/', LogoutView.as_view()),
     path('userlogin/', UserAPIView.as_view(), name= 'get_user'),
