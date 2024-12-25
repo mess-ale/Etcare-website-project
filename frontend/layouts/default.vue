@@ -1,9 +1,9 @@
 <template>
     <div class="web-body">
         <header :style="{ backgroundColor: headerBackgroundColor }" class="fixed top-0 left-0 right-0 z-10 w-full flex items-center justify-between text-primary
-            body-padding_margin xxxs:h-20 md:h-24">
+            body-padding_margin xxxs:h-20 md:h-32">
             <div class="w-1/4">
-                <nuxt-link to="/"><img class="xxxs:w-24 xxxxs:h-8 xxxs:h-10 sm:w-32 sm:h-12 md:w-34 md:h-16 md:w-34 md:h-16"
+                <nuxt-link to="/"><img class="xxxs:w-24 xxxxs:h-8 xxxs:h-10 sm:w-32 sm:h-12 md:w-34 md:h-20 md:w-34"
                         src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" /></nuxt-link>
             </div>
 

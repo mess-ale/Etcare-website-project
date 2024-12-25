@@ -13,7 +13,7 @@
           <div class=" flex flex-col items-center xxxs:space-y-12 md:space-y-32">
             <div class="homecontent">
               <h1
-                class="text-primary xxxs:text-xl xs:text-2xl sm:text-3xl md:text-4xl xl:text-5xl text-f font-oswald pb-8">
+                class="text-primary xxxs:text-xl xs:text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-f font-oswald pb-8">
                 {{ title[currentImageIndex] }}</h1>
 
               <nuxt-link :to="link[currentImageIndex]"
@@ -30,16 +30,19 @@
             </svg>
           </button>
         </div>
-
         <div class="home-links flex font-oswald">
-          <nuxt-link class="link-home" :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 0 === currentImageIndex }"
+          <nuxt-link class="link-home"
+            :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 0 === currentImageIndex }"  
             to="/service/saving">Saving Service</nuxt-link>
-          <nuxt-link class="link-home" :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 1 === currentImageIndex }"
+          <nuxt-link class="link-home"
+            :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 1 === currentImageIndex }"
             to="/service/training">Training Service</nuxt-link>
-          <nuxt-link class="link-home" :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 2 === currentImageIndex }"
-            to="/service/equb">Equb Service</nuxt-link>
-          <nuxt-link class="link-home" :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 3 === currentImageIndex }"
-            to="/service/loan">Loan Service</nuxt-link>
+          <nuxt-link class="link-home"
+            :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 2 === currentImageIndex }" to="/service/equb">Equb
+            Service</nuxt-link>
+          <nuxt-link class="link-home"
+            :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 3 === currentImageIndex }" to="/service/loan">Loan
+            Service</nuxt-link>
         </div>
       </div>
     </div>
@@ -51,10 +54,10 @@ export default {
   data() {
     return {
       images: [
-        '../_nuxt/assets/homepage1.png',
-        '../_nuxt/assets/homepage3.png',
-        '../_nuxt/assets/homepage1.png',
-        '../_nuxt/assets/homepage3.png',
+        '../_nuxt/assets/home_page/2.jpg',
+        '../_nuxt/assets/home_page/1.jpg',
+        '../_nuxt/assets/home_page/3.jpg',
+        '../_nuxt/assets/home_page/4.jpg',
       ],
       title: [
         "Secure Your Financial Future with Our Trustworthy Saving Solutions – Building Wealth with Confidence.",
@@ -202,6 +205,14 @@ export default {
   .link-home:hover {
     border-top: solid 2px theme('colors.primary');
   }
+}
+
+.back-image-home {
+  background-image: url("../assets/file.png"); 
+  padding: 15rem 0; 
+  background-size: cover; /* or contain */ 
+  background-position: center center; 
+  background-repeat: no-repeat; 
 }
 
 .carousel {
