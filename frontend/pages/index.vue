@@ -2,11 +2,11 @@
     <div>
         <SwitchingStacks />
 
-        <div class="bg-primary xxxs:py-4 md:py-8 lg:py-12">
-            <div class="body-padding_margin xxxs:space-y-4 md:space-y-8">
-                <h1 class="text-center font-oswald xxxs:text-3xl md:text-4xl font-bold text-background">Who
+        <div class="bg-primary xxxs:py-4 md:py-8 xxl:py-12">
+            <div class="body-padding_margin xxxs:space-y-4 md:space-y-6 xxl:space-y-8">
+                <h1 class="text-center font-oswald xxxs:text-3xl xxl:text-4xl font-bold text-background">Who
                     we are</h1>
-                <p class="text-center font-robot xxxs:text-1xl sm:text-2xl md:text-3xl ">Etcare SACCO is a member-driven
+                <p class="text-center font-robot xxxs:text-1xl sm:text-2xl xxl:text-3xl ">Etcare SACCO is a member-driven
                     savings and credit cooperative dedicated to empowering individuals
                     through financial inclusion. We provide innovative financial services, from savings and loans to
                     investment opportunities, designed to meet the diverse needs of our members. Our commitment is
@@ -16,7 +16,7 @@
                     community where every member can achieve financial independence and security.</p>
                 <div class="justify-center flex">
                     <nuxt-link
-                        class="who-we-are-button items-center xxxs:text-lg md:text-xl font-oswald xxxs:space-x-2 md:space-x-4 flex font-robot"
+                        class="who-we-are-button items-center xxxs:text-lg md:text-lg xxl:text-xl font-oswald xxxs:space-x-2 md:space-x-4 flex font-robot"
                         to="/about">
                         <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
                             <path fill="currentColor"
@@ -76,11 +76,11 @@
 
         <div class=" xxxs:py-4 md:py-8">
             <div class="body-padding_margin blog-letest xxxs:space-y-4 md:space-y-6">
-                <div class="flex justify-center">
+                <div class="flex justify-center pt-20">
                     <img src="../assets/logo1-removebg.png" alt="logo" />
                 </div>
                 <h1 class="text-center text-primary font-oswald xxxs:text-sm md:text-xl">Directly Blog Posts</h1>
-                <div class="flex justify-center">
+                <div class="flex justify-center pb-20">
                     <p
                         class="p-blog text-primary text-center font-oswald xxxs:text-xl xs:text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold">
                         Latest News & Articles from
@@ -195,6 +195,18 @@ const refreshAccessToken = async () => {
 @media (min-width: 800px) {
     .body-padding_margin {
         padding: 0 3.5rem;
+    }
+    .who-we-are-button {
+        padding: 0.35rem 2.25rem;
+        background-color: theme('colors.background');
+        color: theme('colors.primary');
+        border-radius: 5px;
+        transition: color 1s, border 1s;
+    }
+
+    .who-we-are-button:hover {
+        border: solid 2px theme('colors.secondary');
+        color: theme('colors.secondary');
     }
 }
 

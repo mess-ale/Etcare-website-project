@@ -1,14 +1,14 @@
 <template>
     <div class="web-body">
         <header :style="{ backgroundColor: headerBackgroundColor }" class="fixed top-0 left-0 right-0 z-10 w-full flex items-center justify-between text-primary
-            body-padding_margin xxxs:h-20 md:h-32">
+            body-padding_margin xs:h-20 md:h-24 xxl:h-32">
             <div class="w-1/4">
-                <nuxt-link to="/"><img class="xxxs:w-24 xxxxs:h-8 xxxs:h-10 sm:w-32 sm:h-12 md:w-34 md:h-20 md:w-34"
+                <nuxt-link to="/"><img class="xxxs:w-24 xxxs:h-10 sm:w-32 sm:h-12 md:w-32 md:h-16 xxl:w-34 xxl:h-20"
                         src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" /></nuxt-link>
             </div>
 
             <div class="w-2/4 hidden lg:inline ">
-                <div class="lg:text-sm flex justify-center items-center xl:text-base">
+                <div class="lg:text-sm flex justify-center items-center xxl:text-lg">
                     <div class="lg:space-x-6 xxl:space-x-8 flex item-center font-bold">
                         <nuxt-link to="/" class="links">HOME</nuxt-link>
                         <div class="flex items-center dropdown-link">
@@ -125,7 +125,7 @@
                 </nuxt-link> -->
 
                 <nuxt-link to="/login"
-                    class="xxxs:text-xs md:text-base flex etcare-button xxxs:pt-1 xxxs:pb-1 xxxs:pl-2 xxxs:pr-2 md:pt-2 md:pb-2 md:pl-8 md:pr-8 space-x-10">
+                    class="xxxs:text-xs md:text-sm xxl:text-base flex etcare-button xxxs:pt-1 xxxs:pb-1 xxxs:pl-2 xxxs:pr-2 md:pt-1 md:pb-1 md:pl-4 md:pr-4 xxl:pt-2 xxl:pb-2 xxl:pl-8 xxl:pr-8 space-x-10">
                     SIGN IN
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24">
                         <path fill="currentColor"
@@ -409,7 +409,7 @@
 
             <div
                 class="textcopy body-padding_margin ">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xxxs:py-4 justify-around w-full items-center text-primary md:py-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 xxxs:py-4 justify-around w-full items-center text-primary md:py-6 xxl:py-8">
                     <div>
                         <nuxt-link to="/"> <img src="../assets/Etcare_logo1-removebg.png" alt="etcare logo" />
                         </nuxt-link>

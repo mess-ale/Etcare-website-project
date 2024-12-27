@@ -51,14 +51,14 @@ export default {
           '34': '14rem',
         },
         screens: {
-          'xxxs': '105px',
-          'xxs': '375px',
-          'xs': '475px',
-          'sm': '640px',
-          'md': '768px',
-          'lg': '1024px',
-          'xl': '1280px',
-          'xxl': '1770px',
+          xxxs: '120px',  // Extra small devices (e.g., small phones)
+          xs: '320px',  // Extra small devices (e.g., small phones)
+          sm: '480px',  // Small devices (e.g., smartphones)
+          md: '768px',  // Medium devices (e.g., tablets in portrait mode)
+          lg: '1024px', // Large devices (e.g., tablets in landscape or small laptops)
+          xl: '1280px', // Extra-large devices (e.g., laptops, desktops)
+          xxl: '1440px', // 2XL devices (e.g., large desktops)
+          xxxl: '1920px', // Ultra-wide screens
         },
       },
     },
