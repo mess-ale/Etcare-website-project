@@ -1,53 +1,27 @@
 <template>
   <div class="carousel">
     <div class="back-image relative">
+      <img :src="images[currentImageIndex]" class="home-image-switch" alt="home page image" />
 
-      <svg class="svg_image_top_large" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <!-- Circle with gradient -->
-        <circle cx="50" cy="50" r="40" fill="url(#grad1)" />
-
-        <!-- Gradient Definition -->
+      <svg class="overlay-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+        <!-- Top Large Circle with Gradient -->
+        <circle cx="-30" cy="10" r="50" fill="url(#grad1)" />
+        <!-- Top Small Circle with Gradient -->
+        <circle cx="20" cy="0" r="20" fill="url(#grad2)" />
+        <!-- Bottom Large Circle with Gradient -->
+        <circle cx="140" cy="90" r="50" fill="url(#grad1)" />
+        <!-- Bottom Small Circle with Gradient -->
+        <circle cx="90" cy="100" r="20" fill="url(#grad2)" />
+        <!-- Gradient Definitions -->
         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#214080;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#D92A27;stop-opacity:1" />
         </linearGradient>
-      </svg>
-
-      <svg class="svg_image_top_small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <!-- Circle with gradient -->
-        <circle cx="50" cy="50" r="40" fill="url(#grad1)" />
-
-        <!-- Gradient Definition -->
-        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" style="stop-color:#214080;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#D92A27;stop-opacity:1" />
         </linearGradient>
       </svg>
-
-      <svg class="svg_image_bottom_large" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <!-- Circle with gradient -->
-        <circle cx="50" cy="50" r="40" fill="url(#grad1)" />
-
-        <!-- Gradient Definition -->
-        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#214080;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#D92A27;stop-opacity:1" />
-        </linearGradient>
-      </svg>
-
-      <svg class="svg_image_bottom_small" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-        <!-- Circle with gradient -->
-        <circle cx="50" cy="50" r="40" fill="url(#grad1)" />
-
-        <!-- Gradient Definition -->
-        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#214080;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#D92A27;stop-opacity:1" />
-        </linearGradient>
-      </svg>
-
-      <img :src="images[currentImageIndex]" class="home_image" alt="home page image" />
-
       <div class="center_this body-padding_margin">
         <div>
           <div class="carousel-content flex justify-center items-center text-center"><button @click="prevImage">
@@ -61,7 +35,7 @@
             <div class=" flex flex-col items-center xxxs:space-y-12 md:space-y-24 xxl:space-y-32">
               <div class="homecontent">
                 <h1
-                  class="text-primary xxxs:text-xl xs:text-2xl sm:text-3xl md:text-4xl xxl:text-5xl font-bold text-f font-oswald pb-8">
+                  class="text-primary xxxs:text-xl xs:text-2xl sm:text-3xl md:text-4xl xxl:text-5xl text-f font-oswald pb-8">
                   {{ title[currentImageIndex] }}</h1>
 
                 <nuxt-link :to="link[currentImageIndex]"
@@ -88,12 +62,10 @@
               to="/service/training">Training Service</nuxt-link>
             <nuxt-link class="link-home"
               :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 2 === currentImageIndex }"
-              to="/service/equb">Equb
-              Service</nuxt-link>
+              to="/service/equb">Equb Service</nuxt-link>
             <nuxt-link class="link-home"
               :class="{ 'xxxs:border-t-2 md:border-t-4 border-primary': 3 === currentImageIndex }"
-              to="/service/loan">Loan
-              Service</nuxt-link>
+              to="/service/loan">Loan Service</nuxt-link>
           </div>
         </div>
       </div>
@@ -106,10 +78,10 @@ export default {
   data() {
     return {
       images: [
-        '../_nuxt/assets/home_page/file2.png',
-        '../_nuxt/assets/home_page/file1.png',
-        '../_nuxt/assets/home_page/file3.png',
-        '../_nuxt/assets/home_page/file4.png',
+        '../_nuxt/assets/home_page/02.jpg',
+        '../_nuxt/assets/home_page/06.jpg',
+        '../_nuxt/assets/home_page/05.jpg',
+        '../_nuxt/assets/home_page/06.jpg',
       ],
       title: [
         "Secure Your Financial Future with Our Trustworthy Saving Solutions – Building Wealth with Confidence.",
@@ -181,54 +153,6 @@ export default {
   .link-home:hover {
     border-top: solid 2px theme('colors.primary');
   }
-
-  .svg_image_top_large {
-    position: absolute;
-    top: -20%;
-    left: -40%;
-    z-index: 1;
-    width: 450px;
-    height: 450px;
-  }
-
-  .svg_image_top_small {
-    position: absolute;
-    top: -5%;
-    left: 35%;
-    z-index: 2;
-    width: 150px;
-    height: 150px;
-  }
-
-  .svg_image_bottom_large {
-    position: absolute;
-    bottom: -20%;
-    right: -40%;
-    z-index: 1;
-    width: 450px;
-    height: 450px;
-  }
-
-  .svg_image_bottom_small {
-    position: absolute;
-    bottom: -5%;
-    right: 35%;
-    z-index: 2;
-    width: 150px;
-    height: 150px;
-  }
-
-  img.home_image {
-    position: relative;
-    width: 100%;
-    height: 60%;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 1s ease;
-    z-index: 3;
-    opacity: 0.4;
-  }
-
 }
 
 @media (min-width: 768px) {
@@ -267,68 +191,9 @@ export default {
   .link-home:hover {
     border-top: solid 3px theme('colors.primary');
   }
-
-  .svg_image_top_large {
-    position: absolute;
-    top: -40%;
-    left: -30%;
-    z-index: 1;
-    width: 850px;
-    height: 850px;
-  }
-
-  .svg_image_top_small {
-    position: absolute;
-    top: -15%;
-    left: 15%;
-    z-index: 2;
-    width: 250px;
-    height: 250px;
-  }
-
-  .svg_image_bottom_large {
-    position: absolute;
-    bottom: -40%;
-    right: -30%;
-    z-index: 1;
-    width: 850px;
-    height: 850px;
-  }
-
-  .svg_image_bottom_small {
-    position: absolute;
-    bottom: -15%;
-    right: 15%;
-    z-index: 2;
-    width: 250px;
-    height: 250px;
-  }
-
-
-  img.home_image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 1s ease;
-    z-index: 3;
-    opacity: 0.4;
-  }
 }
 
 @media (min-width: 1024px) {
-  img.home_image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 1s ease;
-    z-index: 3;
-    opacity: 0.4;
-  }
-
   .carousel button {
     color: theme('colors.primary');
     padding: 0.45rem 0.65rem;
@@ -339,16 +204,16 @@ export default {
   }
 
   .carousel {
-    height: 105vh;
+    height: 110vh;
   }
 
   .carousel-content {
     justify-content: space-between;
-    height: 40vh;
+    height: 25vh;
   }
 
   .homecontent {
-    width: 65%;
+    width: 85%;
   }
 
   .home-links {
@@ -358,62 +223,15 @@ export default {
     font-weight: bolder;
     font-size: theme('fontSize.xl');
     width: 100%;
-    padding: 0 14rem;
+    padding: 0 6rem;
   }
 
   .link-home:hover {
     border-top: solid 2px theme('colors.primary');
   }
-
-  .svg_image_top_large {
-    position: absolute;
-    top: -40%;
-    left: -30%;
-    z-index: 1;
-    width: 850px;
-    height: 850px;
-  }
-
-  .svg_image_top_small {
-    position: absolute;
-    top: -15%;
-    left: 15%;
-    z-index: 2;
-    width: 250px;
-    height: 250px;
-  }
-
-  .svg_image_bottom_large {
-    position: absolute;
-    bottom: -40%;
-    right: -30%;
-    z-index: 1;
-    width: 850px;
-    height: 850px;
-  }
-
-  .svg_image_bottom_small {
-    position: absolute;
-    bottom: -15%;
-    right: 15%;
-    z-index: 2;
-    width: 250px;
-    height: 250px;
-  }
 }
 
 @media (min-width: 1468px) {
-  img.home_image {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 1s ease;
-    z-index: 3;
-    opacity: 0.4;
-  }
-
   .home-links {
     justify-content: space-between;
     color: theme('colors.secondary'
@@ -432,53 +250,21 @@ export default {
   .link-home:hover {
     border-top: solid 2px theme('colors.primary');
   }
-
-  .svg_image_top_large {
-    position: absolute;
-    top: -40%;
-    left: -30%;
-    z-index: 1;
-    width: 1200px;
-    height: 1200px;
-  }
-
-  .svg_image_top_small {
-    position: absolute;
-    top: -25%;
-    left: 15%;
-    z-index: 2;
-    width: 500px;
-    height: 500px;
-  }
-
-  .svg_image_bottom_large {
-    position: absolute;
-    bottom: -40%;
-    right: -30%;
-    z-index: 1;
-    width: 1200px;
-    height: 1200px;
-  }
-
-  .svg_image_bottom_small {
-    position: absolute;
-    bottom: -25%;
-    right: 15%;
-    z-index: 2;
-    width: 500px;
-    height: 500px;
-  }
 }
 
-img.home_image {
-  position: relative;
+.home-image-switch {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: background-image 1s ease;
-  z-index: 3;
-  opacity: 0.4;
+}
+
+.overlay-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+  pointer-events: none;
 }
 
 .carousel {
@@ -507,7 +293,7 @@ img.home_image {
 .center_this {
   position: absolute;
   z-index: 4;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
